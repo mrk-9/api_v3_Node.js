@@ -1,0 +1,6 @@
+type SectionEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The Section
+  node: Section
+}

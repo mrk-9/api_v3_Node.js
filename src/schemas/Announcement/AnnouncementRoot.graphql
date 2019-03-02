@@ -1,0 +1,4 @@
+extend type Query {
+  # Get latest announcements based on the user group type
+  announcements(group: String, limit: Int, query: String): [Announcement]!
+}

@@ -1,0 +1,119 @@
+# Valid Member Classes
+enum MemberClass {
+  # A-1 Head Professional
+  A1
+  # A-10 Golf Clinician
+  A10
+  # A-11 Golf Administrator
+  A11
+  #A-12 Golf Coach
+  A12
+  # A-13 General Manager
+  A13
+  # A-14 Director of Instruction
+  A14
+  # A-15 Retail Golf Facility Mgmt Pos.
+  A15
+  # A-16 Golf Course Architect/Builder
+  A16
+  # A-17 Golf Course Superintendent
+  A17
+  # A-18 Golf Media
+  A18
+  # A-19 Golf Manufacturer Mgmt.
+  A19
+  # A-2 Head Professional: Golf Range
+  A2
+  # A-20 Golf Manufacturer Sales Rep
+  A20
+  # A-21 Golf Tournament Director
+  A21
+  # A-22 Golf Rules Official
+  A22
+  # A-23 Golf Club Fitting/Repair
+  A23
+  # A-24 Golf Industry:Other
+  A24
+  # A-3 PGA/LPGA Tour Professional
+  A3
+  # A-4 Director of Golf
+  A4
+  # A-5 Past President
+  A5
+  # A-6 Golf Instructor
+  A6
+  # A-7  Head Professional:Facility Under Construction
+  A7
+  # A-8  Assistant Professional
+  A8
+  # A-9  Management/Development
+  A9
+  # B-1  Apprentice Head Professional
+  B1
+  # B-10 Apprentice Golf Clinician
+  B10
+  # B-11 Apprentice Golf Administrator
+  B11
+  # B-12 Apprentice Golf Coach
+  B12
+  # B-13 Apprentice General Manager
+  B13
+  # B-14 Apprentice Director of Instruction
+  B14
+  # B-15 Apprentice Retail Golf Facility Mgmt Position
+  B15
+  # B-16 Apprentice Golf Course Architect/Builder
+  B16
+  # B-17 Apprentice Golf Course Superintendent
+  B17
+  # B-18 Apprentice Golf Media
+  B18
+  # B-19 Apprentice Golf Manufacturer Management
+  B19
+  # B-2  pprentice Head Professional: Golf Range
+  B2
+  # B-20 Apprentice Golf Manufacturer Sales Rep
+  B20
+  # B-21 Apprentice Golf Tournament Director
+  B21
+  # B-22 Apprentice Golf Rules Official
+  B22
+  # B-23 Apprentice Golf Club Fitting Repair
+  B23
+  # B-4 Apprentice Director of Golf
+  B4
+  # B-6 Apprentice Golf Instructor
+  B6
+  # B-7 Apprentice Head Pro:Fac Under Construction
+  B7
+  # B-8 Apprentice Assistant Professional
+  B8
+  # B-9 Apprentice Management/Development
+  B9
+  # F Class F (Delinquent PDP Requirement)
+  F
+  # HM Honorary Member
+  HM
+  # IN Inactive (Members not in Golf Industry)
+  IN
+  # LM Life Member: Retired
+  LM
+  # LMA Life Member: Active
+  LMA
+  # LMC Life Member Century
+  LMC
+  # LMM Life Member Master Professional: Retired
+  LMM
+  # LMMA Life Member Master Professional: Active
+  LMMA
+  # MP Master Professional
+  MP
+  # RM Retired Member
+  RM
+  # ST Student
+  ST
+  # Prequalifer
+  PQ
+  # Qualifier Eligible
+  QE
+}

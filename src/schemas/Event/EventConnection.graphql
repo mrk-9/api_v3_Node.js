@@ -1,0 +1,6 @@
+type EventConnection {
+  # A list of edges
+  edges: [EventEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

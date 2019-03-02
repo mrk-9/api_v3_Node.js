@@ -1,0 +1,13 @@
+# User Roles
+enum UserRole {
+  # Administrator
+  ADMIN
+  # Anonymous
+  ANONYMOUS
+  # Event Partner
+  EVENT_PARTNER
+  # Member
+  MEMBER
+  # Non Member
+  NON_MEMBER
+}

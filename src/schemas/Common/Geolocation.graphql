@@ -1,0 +1,4 @@
+type Geolocation {
+    lat: Float
+    lng: Float
+}

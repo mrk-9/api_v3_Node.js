@@ -1,0 +1,6 @@
+type PartnerConnection {
+  # A list of edges
+  edges: [PartnerEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

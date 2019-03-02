@@ -1,0 +1,581 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: PGA API v3
+
+Parameters:
+  PgaOrgFileBucket:
+    Type: String
+    Default: sandboxpga.org
+Resources:
+  InvokeApiv3Policy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: "InvokeApiv3"
+      Groups:
+        - !Ref Apiv3UserGroup
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          -
+            Effect: "Allow"
+            Action: "execute-api:Invoke"
+            Resource: !Sub "arn:aws:execute-api:us-east-1:*:${ApiGatewayApi}/*/*/*"
+  Apiv3UserGroup:
+    Type: "AWS::IAM::Group"
+  ApiGatewayIamRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action:
+          - sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - apigateway.amazonaws.com
+        Version: '2012-10-17'
+      Path: /
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - lambda:InvokeFunction
+            - iam:PassRole
+            Effect: Allow
+            Resource: '*'
+        PolicyName: PermitApiGateway
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Effect: Allow
+            Resource: arn:aws:logs:*:*:*
+        PolicyName: logs
+    Type: AWS::IAM::Role
+  GraphQLDynamoIAMRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action:
+          - sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+        Version: '2012-10-17'
+      Path: /
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - lambda:InvokeFunction
+            Effect: Allow
+            Resource: arn:aws:lambda:*:*:function:invoice-aggregator-run
+        PolicyName: InvokeInvoiceAggregator
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - dynamodb:GetItem
+            - dynamodb:Query
+            - dynamodb:PutItem
+            - dynamodb:BatchGetItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:BatchWriteItem
+            - dynamodb:Scan
+            Effect: Allow
+            Resource: "*"
+        PolicyName: DynamoDBCrudPolicy
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - s3:GetObject
+            - s3:PutObject
+            Effect: Allow
+            Resource:
+              Fn::Sub:
+                - ${S3BucketArn}/*
+                - { S3BucketArn: !GetAtt JobCandidateFilesBucket.Arn }
+        PolicyName: S3CrudPolicy
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - s3:GetObject
+            - s3:PutObject
+            Effect: Allow
+            Resource: !Sub "arn:aws:s3:::${PgaOrgFileBucket}/*"
+        PolicyName: PgaOrgBucketPolicy
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Effect: Allow
+            Resource: arn:aws:logs:*:*:*
+        PolicyName: logs
+      - PolicyDocument:
+          Statement:
+          - Action: ssm:GetParameters
+            Effect: Allow
+            Resource:
+              - arn:aws:ssm:*:*:parameter/algolia-api/*
+              - arn:aws:ssm:*:*:parameter/harvest-api/*
+              - arn:aws:ssm:*:*:parameter/legacy-api/*
+              - arn:aws:ssm:*:*:parameter/v3-api/*
+        PolicyName: LambdaSsmEnvVars
+    Type: AWS::IAM::Role
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    DependsOn: ApiGatewayIamRole
+    Properties:
+      StageName: Prod
+      DefinitionBody:
+        swagger: "2.0"
+        info:
+          title: !Ref AWS::StackName
+        paths:
+          "/graphql-sig4":
+            get:
+              security:
+              - sigv4: []
+              - api_key: []
+              x-amazon-apigateway-integration:
+                httpMethod: POST
+                type: aws_proxy
+                credentials: !GetAtt ApiGatewayIamRole.Arn
+                uri:
+                  Fn::Sub:
+                    - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GraphQLArn}/invocations
+                    - { GraphQLArn: !GetAtt GraphQLSig4.Arn }
+              responses: {}
+            post:
+              security:
+              - sigv4: []
+              - api_key: []
+              x-amazon-apigateway-integration:
+                httpMethod: POST
+                type: aws_proxy
+                credentials: !GetAtt ApiGatewayIamRole.Arn
+                uri:
+                  Fn::Sub:
+                    - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GraphQLArn}/invocations
+                    - { GraphQLArn: !GetAtt GraphQLSig4.Arn }
+              responses: {}
+          "/graphql":
+            get:
+              x-amazon-apigateway-integration:
+                httpMethod: POST
+                type: aws_proxy
+                credentials: !GetAtt ApiGatewayIamRole.Arn
+                uri:
+                  Fn::Sub:
+                    - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GraphQLArn}/invocations
+                    - { GraphQLArn: !GetAtt GraphQL.Arn }
+              responses: {}
+            post:
+              x-amazon-apigateway-integration:
+                httpMethod: POST
+                type: aws_proxy
+                credentials: !GetAtt ApiGatewayIamRole.Arn
+                uri:
+                  Fn::Sub:
+                    - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GraphQLArn}/invocations
+                    - { GraphQLArn: !GetAtt GraphQL.Arn }
+              responses: {}
+            options:
+              x-amazon-apigateway-integration:
+                httpMethod: POST
+                type: aws_proxy
+                credentials: !GetAtt ApiGatewayIamRole.Arn
+                uri:
+                  Fn::Sub:
+                    - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GraphQLArn}/invocations
+                    - { GraphQLArn: !GetAtt GraphQL.Arn }
+              responses: {}
+          "/graphiql":
+            get:
+              x-amazon-apigateway-integration:
+                httpMethod: POST
+                type: aws_proxy
+                credentials: !GetAtt ApiGatewayIamRole.Arn
+                uri:
+                  Fn::Sub:
+                    - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GraphQLInspectorArn}/invocations
+                    - { GraphQLInspectorArn: !GetAtt GraphQLInspector.Arn }
+              responses: {}
+        securityDefinitions:
+          api_key:
+            type: "apiKey"
+            name: "x-api-key"
+            in: "header"
+          sigv4:
+            type: "apiKey"
+            name: "Authorization"
+            in: "header"
+            x-amazon-apigateway-authtype: "awsSigv4"
+  BasePathMapping:
+    Type: 'AWS::ApiGateway::BasePathMapping'
+    Properties:
+      DomainName: !Ref DomainName
+      RestApiId: !Ref ApiGatewayApi
+      Stage: Prod
+  DomainName:
+    Type: 'AWS::ApiGateway::DomainName'
+    Properties:
+      CertificateArn: !ImportValue PGA-ORG-CERT
+      DomainName:
+        Fn::Sub:
+          - developers.${Domain}
+          - Domain:
+              Fn::ImportValue: PGA-ORG-HOSTED-NAME
+  ARecord:
+    Type: 'AWS::Route53::RecordSet'
+    DependsOn: DomainName
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt DomainName.DistributionDomainName
+        HostedZoneId: Z2FDTNDATAQYW2
+      HostedZoneId: !ImportValue PGA-ORG-HOSTED-ZONE
+      Name:
+        Fn::Sub:
+          - developers.${Domain}
+          - Domain:
+              Fn::ImportValue: PGA-ORG-HOSTED-NAME
+      Type: A
+  GraphQLSig4:
+    Type: AWS::Serverless::Function
+    FunctionName: GraphQL
+    Properties:
+      Role: !GetAtt GraphQLDynamoIAMRole.Arn
+      CodeUri: .
+      Handler: src/graphql.partner
+      Runtime: nodejs8.10
+      Timeout: 20
+      Events:
+        AnyRequest:
+          Type: Api
+          Properties:
+            Path: /graphql-sig4
+            Method: any
+            RestApiId: !Ref ApiGatewayApi
+      Environment:
+        Variables:
+          ALGOLIA_API_KEY: ssm:/algolia-api/key
+          ALGOLIA_APP_ID: ssm:/algolia-api/app-id
+          ATTACHMENTS_BUCKET_NAME: !Ref JobCandidateFilesBucket
+          DYNAMODB_ENDPOINT: https://dynamodb.us-east-1.amazonaws.com
+          GREENHOUSE_USER_ID: ssm:/v3-api/greenhouse-user-id
+          HARVEST_API_KEY: ssm:/harvest-api/key
+          HARVEST_API_URL: ssm:/harvest-api/url
+          LOG_LEVEL: ssm:/v3-api/log-level
+          SSN_ENCRYPTION_KEY: ssm:/v3-api/ssn-encryption-key
+          USER_ARN: ""
+          V2_API_KEY: ssm:/legacy-api/key
+          V2_API_URL: ssm:/legacy-api/url
+          SB_URL: !ImportValue SB-URL
+  GraphQL:
+    Type: AWS::Serverless::Function
+    FunctionName: GraphQL
+    Properties:
+      Role: !GetAtt GraphQLDynamoIAMRole.Arn
+      CodeUri: .
+      Handler: src/graphql.member
+      Runtime: nodejs8.10
+      Timeout: 20
+      Events:
+        GetRequest:
+          Type: Api
+          Properties:
+            Path: /graphql
+            Method: get
+            RestApiId: !Ref ApiGatewayApi
+        PostRequest:
+          Type: Api
+          Properties:
+            Path: /graphql
+            Method: post
+            RestApiId: !Ref ApiGatewayApi
+        OptionsRequest:
+          Type: Api
+          Properties:
+            Path: /graphql
+            Method: options
+            RestApiId: !Ref ApiGatewayApi
+      Environment:
+        Variables:
+          ALGOLIA_API_KEY: ssm:/algolia-api/key
+          ALGOLIA_APP_ID: ssm:/algolia-api/app-id
+          ATTACHMENTS_BUCKET_NAME: !Ref JobCandidateFilesBucket
+          DYNAMODB_ENDPOINT: https://dynamodb.us-east-1.amazonaws.com
+          GREENHOUSE_USER_ID: ssm:/v3-api/greenhouse-user-id
+          HARVEST_API_KEY: ssm:/harvest-api/key
+          HARVEST_API_URL: ssm:/harvest-api/url
+          LOG_LEVEL: ssm:/v3-api/log-level
+          SSN_ENCRYPTION_KEY: ssm:/v3-api/ssn-encryption-key
+          USER_ARN: ""
+          V2_API_KEY: ssm:/legacy-api/key
+          V2_API_URL: ssm:/legacy-api/url
+          SB_URL: !ImportValue SB-URL
+          PGA_ORG_FILE_BUCKET: !Ref PgaOrgFileBucket
+  GraphQLInspector:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt GraphQLDynamoIAMRole.Arn
+      CodeUri: .
+      Handler: src/graphiql.handler
+      Runtime: nodejs8.10
+      Timeout: 20
+      Events:
+        GetRequest:
+          Type: Api
+          Properties:
+            Path: /graphiql
+            Method: get
+            RestApiId: !Ref ApiGatewayApi
+  EventTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Event
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+        -
+          AttributeName: "sectionId"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+      GlobalSecondaryIndexes:
+      - IndexName: sectionIdIndex
+        KeySchema:
+        - AttributeName: sectionId
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+  InvoiceTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Invoice
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+        -
+          AttributeName: "batchDate"
+          AttributeType: "S"
+        -
+          AttributeName: "createdBy"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+      GlobalSecondaryIndexes:
+      - IndexName: batchDateIndex
+        KeySchema:
+        - AttributeName: batchDate
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+      - IndexName: createdByIndex
+        KeySchema:
+        - AttributeName: createdBy
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+  SectionTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Section
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+  PurseBatchTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: PurseBatch
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+  MemberTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Member
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+        -
+          AttributeName: "sectionId"
+          AttributeType: "S"
+        -
+          AttributeName: "universalId"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+      GlobalSecondaryIndexes:
+      - IndexName: sectionIdIndex
+        KeySchema:
+        - AttributeName: sectionId
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+      - IndexName: universalIdIndex
+        KeySchema:
+        - AttributeName: universalId
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+  ProductTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Product
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+        -
+          AttributeName: "eventId"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+      GlobalSecondaryIndexes:
+      - IndexName: eventIdIndex
+        KeySchema:
+        - AttributeName: eventId
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+  FacilityTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Facility
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+        -
+          AttributeName: "greenhouseId"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+      GlobalSecondaryIndexes:
+      - IndexName: greenhouseIdIndex
+        KeySchema:
+        - AttributeName: greenhouseId
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+  PaymentTypeTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: PaymentType
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+        -
+          AttributeName: "sectionId"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+      GlobalSecondaryIndexes:
+      - IndexName: sectionIdIndex
+        KeySchema:
+        - AttributeName: sectionId
+          KeyType: HASH
+        Projection:
+          ProjectionType: ALL
+  JobCandidateFilesBucket:
+    Type: 'AWS::S3::Bucket'
+    DeletionPolicy: Retain
+    Properties:
+      AccessControl: Private
+      CorsConfiguration:
+        CorsRules:
+          - Id: attachmentsBucketCORSRuleId
+            AllowedOrigins: ['*']
+            AllowedHeaders: ['*']
+            AllowedMethods: [GET, POST]
+      LifecycleConfiguration:
+        Rules:
+          - Id: attachmentExpirationRule
+            ExpirationInDays: 1
+            Status: Enabled
+  PartnerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Partner
+      SSESpecification:
+        SSEEnabled: true
+      AttributeDefinitions:
+        -
+          AttributeName: "id"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
+
+Outputs:
+  APIV3:
+    Description: API V3 URL
+    Value:
+      Fn::Sub:
+        - https://developers.${Domain}
+        - Domain:
+            Fn::ImportValue: PGA-ORG-HOSTED-NAME
+    Export:
+      Name: API-V3-URL
+  Apiv3SecurityGroup:
+    Description: API v3 user group
+    Value: !Ref Apiv3UserGroup
+    Export:
+      Name: API-V3-GROUP

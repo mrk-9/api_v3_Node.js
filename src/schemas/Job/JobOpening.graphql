@@ -1,0 +1,8 @@
+type JobOpening {
+    # ID of job opening
+    id: ID
+    # Status either "open" or "closed"
+    status: String
+    # This is the date and time this opening was created
+    openedAt: DateTime
+}

@@ -1,0 +1,26 @@
+type JobCustomField {
+  # Custom Field ID
+  id: ID!
+  # Name
+  name: String
+  # Boolean value which is false if the custom field has been deleted, true otherwise.
+  active: Boolean
+  # One of job, candidate, application, offer, rejection_question, referral_question. This is also included in the URL as an argument, which will return only custom fields that match the given type.
+  fieldType: String
+  # Numeric field used for ordering in Greenhouse
+  priority: Int
+  # One of short_text, long_text, yes_no, single_select, multi_select, currency, currency_range, number, number_range, date, url, or user
+  valueType: String
+  #	Boolean value to say if this field is private in Greenhouse
+  private: Boolean
+  # The object this field exists on can not be saved if this value is not set
+  required: Boolean
+  #	Only applicable to job custom fields, changes to this fields requires an approval flow in Greenhouse to be re-done
+  requireApproval: Boolean
+  # Only applicable to offer custom fields, changes to this field creates a new offer version
+  triggerNewVersion: Boolean
+  # Listed as “immutable field key” in Greenhouse, this value is based of the name of the field when it is created and does not change as the field’s name is later updated
+  nameKey: String
+  # For single_select and multi_select field_types, this is the list of options for that select.
+  customFieldOptions: [JobCustomFieldOption]
+}

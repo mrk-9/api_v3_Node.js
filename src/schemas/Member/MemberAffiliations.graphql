@@ -1,0 +1,6 @@
+type MemberAffiliations {
+  # description of affiliation
+  description: String
+  # effective year of affiliation
+  effectiveYear: Int
+}

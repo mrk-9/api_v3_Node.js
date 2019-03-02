@@ -1,0 +1,156 @@
+{
+  "data": {
+      "affiliations": [],
+      "alerts": [],
+      "awards": [],
+      "birthdate": "05/05/1970",
+      "certifications": [],
+      "certified_professional": "",
+      "city": "Hobe Sound",
+      "contact": [
+          {
+              "email": "jnewkirk@pgahq.com",
+              "phone": "5616248400",
+              "mobile": "9373614263"
+          }
+      ],
+      "contact_information": [
+          {
+              "primary_email": "jnewkirk@pgahq.com",
+              "primary_phone": "(937) 882-0028",
+              "primary_mobile": "(937) 361-4263",
+              "public_email": "jnewkirk@pgahq.com",
+              "public_phone": "5616248400",
+              "public_mobile": "9373614263"
+          }
+      ],
+      "employment_code": "",
+      "employment_title": "",
+      "expertises": [
+          {
+              "id": "498",
+              "name": "Events"
+          },
+          {
+              "id": "510",
+              "name": "Player Development"
+          },
+          {
+              "id": "527",
+              "name": "Tournament Operations"
+          }
+      ],
+      "facilities": [
+          {
+              "id": "PGA",
+              "name": "PGA of America Nat'l Office Headquarters",
+              "address1": "100 Avenue Of Champions",
+              "address2": "Palm Beach Gardens, FL 33418-3653",
+              "address3": "",
+              "address4": "",
+              "city": "Palm Beach Gardens",
+              "state": "FL",
+              "zip": "33418-3653",
+              "latitude": "26.844800",
+              "longitude": "-80.136800",
+              "phone": "(561) 624-8400",
+              "uid": "921118613",
+              "greenhouse_id": "27259",
+              "highest_ranked": "N",
+              "primary": "Y"
+          }
+      ],
+      "first_name": "John",
+      "full_name": "John S. Newkirk, PGA",
+      "gender": "M",
+      "greenhouse_id": "597529",
+      "informal_name": "John",
+      "last_name": "Newkirk",
+      "latitude": "27.081500",
+      "longitude": "-80.149400",
+      "master_professional": "",
+      "member_affiliations": [],
+      "member_awards": [
+          {
+              "description": "Member Assistant of the Year",
+              "effective_year": "2002"
+          }
+      ],
+      "member_certifications": [],
+      "member_class": "A-11",
+      "member_class_description": "Golf Administrator",
+      "member_number": "03615121",
+      "member_type": "MB",
+      "suspended": false,
+      "overview": "Serve the member and grow the game.",
+      "photo_profile": "http://s3.amazonaws.com/pga.org/members/dev/photos/profile/03615121/9ed48ee77572211831f964ab94aa6aff15a5adea.jpg",
+      "preferred_address": [
+          {
+              "id": "59309",
+              "type": "HM",
+              "address1": "12603 SE Old Cypress Dr",
+              "address2": "",
+              "address3": "",
+              "address4": "",
+              "city": "Hobe Sound",
+              "state": "FL",
+              "zip": "33455-7923",
+              "country": "US"
+          }
+      ],
+      "profile_name": "John Newkirk",
+      "section_id": "195",
+      "section_name": "South Florida Section",
+      "chapter_name": "SFL SouthEast Chapter",
+      "social": [
+          {
+              "social_type": "twitter",
+              "social_value": "https://twitter.com/johnewkirk"
+          },
+          {
+              "social_type": "facebook",
+              "social_value": "https://facebook.com/johnnewkirk"
+          },
+          {
+              "social_type": "website",
+              "social_value": "https://www.example.com"
+          },
+          {
+              "social_type": "linkedin",
+              "social_value": "https://twitter.com/johnewkirk"
+          }
+      ],
+      "state": "FL",
+      "state_name": "Florida",
+      "universal_id": "991082140",
+      "viewing_permissions": [
+          {
+              "view_email_public": false,
+              "view_email_member": true,
+              "view_phone_public": false,
+              "view_phone_member": true,
+              "view_mobile_public": false,
+              "view_mobile_member": true,
+              "view_address_public": false,
+              "view_address_member": false,
+              "view_awards_public": true,
+              "view_awards_member": true,
+              "view_certifications_public": true,
+              "view_certifications_member": true,
+              "view_affiliations_public": true,
+              "view_affiliations_member": true,
+              "view_expertises_public": true,
+              "view_expertises_member": true,
+              "view_profile_public": true,
+              "view_profile_member": true
+          }
+      ]
+  },
+  "errors": [],
+  "meta": {
+      "api-version": "0.0.1",
+      "http-status-code": "200",
+      "http-status-message": "Success",
+      "partner-name": "PGA Developer"
+  }
+}

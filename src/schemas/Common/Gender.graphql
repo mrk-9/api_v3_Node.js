@@ -1,0 +1,7 @@
+# Gender Representation
+enum Gender {
+  # Male
+  M
+  #Female
+  F
+}

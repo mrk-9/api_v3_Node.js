@@ -1,0 +1,6 @@
+type ProductEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The Product
+  node: Product
+}

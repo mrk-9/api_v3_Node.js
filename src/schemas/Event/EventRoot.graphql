@@ -1,0 +1,47 @@
+extend type Query {
+  # Look up an event by its ID
+  event(id: ID!): Event
+  # Look up events
+  events(
+    # Returns the first n events from the list. Must be within 1-100.
+    first: Int = 100,
+    # Returns the events that come after the given EventEdge.cursor.
+    after: String
+  ): EventConnection!
+}
+
+extend type Mutation {
+  # Creates an event
+  createEvent(input: AddEventInput): Event
+  # Mark event as deleted
+  deleteEvent(
+    # The Event ID to delete
+    id: ID!
+  ): Event
+  # Updates an event
+  updateEvent(
+    # The Event ID to update
+    id: ID!,
+    input: UpdateEventInput
+  ): Event
+}
+
+input AddEventInput {
+  # Event ID
+  id: ID
+  # Event name
+  name: String!
+  # Event section ID
+  sectionId: ID!
+  # Whether or not this event is closed
+  closed: Boolean
+}
+
+input UpdateEventInput {
+  # Event name
+  name: String
+  # Event section ID
+  sectionId: ID
+  # Whether or not this event is closed
+  closed: Boolean
+}

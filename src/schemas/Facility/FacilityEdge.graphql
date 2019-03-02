@@ -1,0 +1,6 @@
+type FacilityEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The facility
+  node: Facility
+}

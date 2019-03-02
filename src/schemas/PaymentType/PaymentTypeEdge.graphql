@@ -1,0 +1,6 @@
+type PaymentTypeEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The PaymentType
+  node: PaymentType
+}

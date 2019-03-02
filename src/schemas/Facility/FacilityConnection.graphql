@@ -1,0 +1,6 @@
+type FacilityConnection {
+  # A list of edges
+  edges: [FacilityEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

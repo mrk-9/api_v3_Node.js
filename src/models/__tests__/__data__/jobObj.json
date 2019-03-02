@@ -1,0 +1,74 @@
+{
+  "id": 100001,
+  "name": "Roman Test Job",
+  "requisition_id": null,
+  "notes": "Looking for the best!",
+  "confidential": false,
+  "status": "open",
+  "created_at": "2018-07-13T14:58:19.742Z",
+  "opened_at": "2018-07-13T14:58:20.674Z",
+  "closed_at": null,
+  "departments": [null],
+  "offices": [
+    {
+      "id": 27259,
+      "name": "PGA of America Nat'l Office Headquarters"
+    }
+  ],
+  "hiring_team": {
+    "hiring_managers": [
+      {
+        "id": 776851,
+        "first_name": "Kid",
+        "last_name": "Kane",
+        "employee_id": "139041117"
+      }
+    ],
+    "recruiters": [],
+    "coordinators": [],
+    "sourcers": []
+  },
+  "custom_fields": {
+    "other_job_type": null,
+    "applicant_group": "PGA Professional and General Public",
+    "employment_type": "Seasonal",
+    "overview": null,
+    "experience_required": null,
+    "essential_responsibilities": null,
+    "benefits": null,
+    "base_compensation": {
+      "value": 10,
+      "unit": "USD"
+    },
+    "base_compensation_max": null,
+    "pay_schedule": "Hourly",
+    "additional_income": null,
+    "total_anticipated_compensation": null,
+    "education": null,
+    "submission_deadline": "2018-07-14",
+    "years_experience": null,
+    "contact_name": null,
+    "contact_title": null,
+    "contact_email": null,
+    "apply_via": "PGA.org Website",
+    "external_job_url": null,
+    "supervisor_title": null,
+    "term_of_service_agreement": true,
+    "job_categories": null,
+    "current_step": "Removed",
+    "image_set_id": null,
+    "employment_start_date": null,
+    "employment_end_date": null
+  },
+  "openings": [
+    {
+      "id": 1931104,
+      "opening_id": null,
+      "status": "open",
+      "opened_at": "2018-07-13T14:58:20.299Z",
+      "closed_at": null,
+      "application_id": null,
+      "close_reason": null
+    }
+  ]
+}

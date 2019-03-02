@@ -1,0 +1,9 @@
+extend type Query {
+  # Look up BillingEvents
+  billingEvents(
+    # Returns the first n BillingEvents from the list. Must be within 1-100
+    first: Int = 100,
+    # Returns the BillingEvents that come after the given BillingEventEdge.cursor.
+    after: String
+  ): BillingEventConnection!
+}

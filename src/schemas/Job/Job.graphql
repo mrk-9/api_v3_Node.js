@@ -1,0 +1,62 @@
+type Job {
+  # Greenhouse ID
+  id: ID!
+  # Greenhouse UserID
+  userId: ID
+  # PGA Facilities
+  offices: [JobOffice]
+  # Hiring Manager
+  hiringManager: JobHiringManager
+  # Application Group
+  applicantGroup: String
+  # Category/Department
+  jobCategory: String
+  # Title
+  jobTitle: String
+  # Status
+  status: String
+  # Employment Type
+  employmentType: String
+  # Years of Experience
+  yearsExperience: String
+  # Submission Deadline
+  submissionDeadline: Date
+  # Base Compensation
+  baseCompensation: Money
+  # Max Base Compensation
+  baseCompensationMax: Money
+  # Pay Schedule
+  paySchedule: String
+  # Additional Income
+  additionalIncome: String
+  # Total Anticipated Compensation
+  totalCompensation: Money
+  # Contact Information
+  contact: JobContact
+  # Education History
+  education: [String]
+  # Where to Apply for Job
+  applyVia: String
+  # Url for Applying Externally
+  website: HttpUrl
+  # Overview
+  overview: String
+  # Experience Required
+  experienceRequired: String
+  # Responsibilities
+  responsibilities: String
+  # Benefits
+  benefits: String
+  # Terms of Service Agreement
+  termOfServiceAgreement: Boolean
+  # Current Step In Creation Process
+  currentStep: String
+  # DateTime Job Was Created
+  createdAt: DateTime
+  # DateTime Job Was Opened
+  openedAt: DateTime
+  # Job Openings
+  openings: [JobOpening]
+  # Facilities
+  facilities: [Facility]
+}

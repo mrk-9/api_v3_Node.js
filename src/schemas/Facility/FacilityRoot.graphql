@@ -1,0 +1,57 @@
+extend type Query {
+  # Look up a facility by its ID
+  facility(id: ID!): Facility
+  # Look up facilities
+  facilities(
+    # Returns the first n facilities from the list. Must be within 1-100
+    first: Int = 100,
+    # Returns the facilities that come after the given FacilityEdge.cursor.
+    after: String
+  ): FacilityConnection!
+}
+
+extend type Mutation {
+  # Creates a facility
+  createFacility(input: AddFacilityInput): Facility
+  # Deletes a facility
+  deleteFacility(
+    # The Facility ID to delete
+    id: ID!
+  ): Facility
+  # Updates a facility
+  updateFacility(
+    # The Facility ID to update
+    id: ID!,
+    input: UpdateFacilityInput
+  ): Facility
+}
+
+input AddFacilityInput {
+  # Facility ID
+  id: ID!
+  # Facility Name
+  name: NonEmptyString!
+  # Facility Section ID
+  sectionId: ID!
+  # Facility Universal ID
+  universalId: ID!
+  # Facility Address
+  address: AddressInput
+  # Facility Greenhouse ID
+  greenhouseId: ID
+}
+
+input UpdateFacilityInput {
+  # Facility ID
+  id: ID
+  # Facility Name
+  name: NonEmptyString
+  # Facility Section ID
+  sectionId: ID
+  # Facility Universal ID
+  universalId: ID
+  # Facility Address
+  address: AddressInput
+  # Facility Greenhouse ID
+  greenhouseId: ID
+}

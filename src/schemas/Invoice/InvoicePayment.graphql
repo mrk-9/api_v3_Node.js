@@ -1,0 +1,8 @@
+type InvoicePayment {
+  # Payment ID from payment processor
+  transactionNumber: ID
+  # Payment type
+  type: PaymentType!
+  # Payment amount
+  amount: Money!
+}

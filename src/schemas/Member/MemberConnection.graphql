@@ -1,0 +1,6 @@
+type MemberConnection {
+  # List of connection edges
+  edges: [MemberEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

@@ -1,0 +1,6 @@
+type MemberExpertise {
+  # id of expertise
+  id: ID!
+  # name of expertise
+  name: NonEmptyString!
+}

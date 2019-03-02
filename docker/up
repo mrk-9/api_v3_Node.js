@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+[ -z "$AWS_REGION" ] && export AWS_REGION="us-east-1"
+[ -z "$DYNAMODB_ENDPOINT" ] && export DYNAMODB_ENDPOINT="http://0.0.0.0:8000"
+[ -z "$USER_ARN" ] && export USER_ARN="arn:aws:iam::181477382365:user/lionforest"
+[ -z "$ATTACHMENTS_BUCKET_NAME" ] && export ATTACHMENTS_BUCKET_NAME="pga-sandbox-job-candidate-attachments"
+[ -z "$PGA_ORG_FILE_BUCKET" ] && export PGA_ORG_FILE_BUCKET="sandboxpga.org"
+
+docker-compose up -d

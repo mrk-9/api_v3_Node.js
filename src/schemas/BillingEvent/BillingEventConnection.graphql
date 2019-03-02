@@ -1,0 +1,6 @@
+type BillingEventConnection {
+  # A list of edges
+  edges: [BillingEventEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

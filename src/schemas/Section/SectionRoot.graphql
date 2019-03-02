@@ -1,0 +1,53 @@
+extend type Query {
+  # Look up Section by ID
+  section(id: ID!): Section
+  # Look up Sections
+  sections(
+    # Returns the first n sections from the list. Must be within 1-100.
+    first: Int = 100,
+    # Returns the sections that come after the given SectionEdge.cursor.
+    after: String
+  ): SectionConnection!
+  # Returns the Sections associated with the given state
+  stateSections(state: NonEmptyString!): [Section]
+}
+
+extend type Mutation {
+  # Create a Section
+  createSection(input: AddSectionInput): Section
+  # Delete a Section
+  deleteSection(
+    # The Section ID to delete
+    id: ID!
+  ): Section
+  # Update a Section
+  updateSection(
+    # The Section ID to update
+    id: ID!,
+    input: UpdateSectionInput
+  ): Section
+}
+
+input AddSectionInput {
+  # Section ID
+  id: ID
+  # Section name
+  name: String!
+  # Section Address
+  address: AddressInput
+  # Section Career Consultant
+  careerConsultant: CareerConsultantInput
+  # Section Internship Coordinator
+  internshipCoordinator: InternshipCoordinatorInput
+}
+
+input UpdateSectionInput {
+  # Section name
+  name: String
+  # Section Address
+  address: AddressInput
+  # Section Career Consultant
+  careerConsultant: CareerConsultantInput
+  # Section Internship Coordinator
+  internshipCoordinator: InternshipCoordinatorInput
+}

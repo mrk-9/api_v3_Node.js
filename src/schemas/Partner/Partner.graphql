@@ -1,0 +1,15 @@
+type Partner {
+  #  Partner User ARN
+  id: ID!
+  # Name
+  displayName: NonEmptyString!
+  # User Role
+  role: UserRole!
+  # Section
+  section: Section!
+  # The date and time when the Partner was created
+  createdAt: DateTime
+  # The date and time when the Partner was last updated
+  updatedAt: DateTime
+}
+

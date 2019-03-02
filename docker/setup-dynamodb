@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+echo Setting up DynamoDB Local
+npm run create-tables
+npm run seed-tables
+
+echo DynamoDB Local is ready

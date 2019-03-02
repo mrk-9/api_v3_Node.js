@@ -1,0 +1,6 @@
+type SpecializationProduct {
+  # Education Level Code as M1, M2
+  code: EDLevelCode!
+  # Product description
+  description: String
+}

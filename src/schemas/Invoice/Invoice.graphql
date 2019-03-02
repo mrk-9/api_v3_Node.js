@@ -1,0 +1,25 @@
+# Event invoice
+type Invoice {
+  # Invoice UUID
+  id: ID!
+  # Invoice number.
+  invoiceNumber: ID!
+  # Invoice amount before taxes
+  subtotal: Money!
+  # Invoice tax amount
+  tax: Money!
+  # Invoice total amount, including taxes
+  total: Money!
+  # Invoice line items
+  items: [InvoiceItem!]!
+  # Invoice payment information
+  payments: [InvoicePayment!]!
+  # Invoice date
+  date: Date
+  # Invoice URL
+  invoiceUrl: HttpUrl
+  # The invoice creator
+  createdBy: Partner
+  # The date and time when the invoice was created
+  createdAt: DateTime
+}

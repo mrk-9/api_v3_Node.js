@@ -1,0 +1,322 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Job Model can create job permissions 1`] = `
+Object {
+  "id": "123",
+  "officeId": "999",
+  "userRoleId": "566",
+}
+`;
+
+exports[`Job Model can create user 1`] = `
+Object {
+  "first_name": "first",
+  "id": 1017652,
+  "last_name": "last",
+}
+`;
+
+exports[`Job Model can duplicate job 1`] = `
+Object {
+  "additionalIncome": null,
+  "applicantGroup": "PGA Professional and General Public",
+  "applyVia": "PGA.org Website",
+  "baseCompensation": 10,
+  "baseCompensationMax": null,
+  "benefits": null,
+  "contact": Object {
+    "email": null,
+    "name": null,
+    "title": null,
+  },
+  "createdAt": "2018-07-13T14:58:19.742Z",
+  "currentStep": "Removed",
+  "education": null,
+  "employmentType": "Seasonal",
+  "experienceRequired": null,
+  "hiringManager": Object {
+    "employeeId": "139041117",
+    "firstName": "Kid",
+    "id": 776851,
+    "lastName": "Kane",
+    "name": undefined,
+  },
+  "id": 100001,
+  "jobCategory": null,
+  "jobTitle": "Roman Test Job",
+  "offices": Array [
+    Object {
+      "id": 27259,
+      "name": "PGA of America Nat'l Office Headquarters",
+    },
+  ],
+  "openedAt": "2018-07-13T14:58:20.674Z",
+  "openings": Array [
+    Object {
+      "id": 1931104,
+      "openedAt": "2018-07-13T14:58:20.299Z",
+      "status": "open",
+    },
+  ],
+  "overview": null,
+  "paySchedule": "Hourly",
+  "responsibilities": null,
+  "status": "open",
+  "submissionDeadline": "2018-07-14",
+  "termOfServiceAgreement": true,
+  "totalCompensation": null,
+  "userId": undefined,
+  "website": null,
+  "yearsExperience": null,
+}
+`;
+
+exports[`Job Model can find user by email 1`] = `
+Object {
+  "created_at": "2019-02-28T17:12:22.818Z",
+  "disabled": false,
+  "emails": Array [
+    "test@email.com",
+  ],
+  "employee_id": null,
+  "first_name": "first_test",
+  "id": 123456,
+  "last_name": "last_test",
+  "name": "test",
+  "site_admin": false,
+  "updated_at": "2019-02-28T17:12:22.818Z",
+}
+`;
+
+exports[`Job Model can get custom fields 1`] = `
+Array [
+  Object {
+    "active": true,
+    "customFieldOptions": Array [
+      Object {
+        "id": 10684619,
+        "name": "Seasonal",
+        "priority": 0,
+      },
+      Object {
+        "id": 11784837,
+        "name": "Year Round",
+        "priority": 1,
+      },
+      Object {
+        "id": 11220411,
+        "name": "Part Time",
+        "priority": 2,
+      },
+    ],
+    "fieldType": "job",
+    "id": 131029,
+    "name": "Employment Type",
+    "nameKey": "employment_type",
+    "priority": 2,
+    "private": false,
+    "requireApproval": false,
+    "required": true,
+    "triggerNewVersion": false,
+    "valueType": "single_select",
+  },
+]
+`;
+
+exports[`Job Model can get job permissions 1`] = `
+Array [
+  Object {
+    "departmentId": null,
+    "id": 361480,
+    "officeId": 27259,
+    "userRoleId": 17735,
+  },
+]
+`;
+
+exports[`Job Model can save a new job 1`] = `
+Object {
+  "closed_at": null,
+  "confidential": false,
+  "created_at": "2018-07-13T14:58:19.742Z",
+  "custom_fields": Object {
+    "additional_income": null,
+    "applicant_group": "PGA Professional and General Public",
+    "apply_via": "PGA.org Website",
+    "base_compensation": Object {
+      "unit": "USD",
+      "value": 10,
+    },
+    "base_compensation_max": null,
+    "benefits": null,
+    "contact_email": null,
+    "contact_name": null,
+    "contact_title": null,
+    "current_step": "Removed",
+    "education": null,
+    "employment_end_date": null,
+    "employment_start_date": null,
+    "employment_type": "Seasonal",
+    "essential_responsibilities": null,
+    "experience_required": null,
+    "external_job_url": null,
+    "image_set_id": null,
+    "job_categories": null,
+    "other_job_type": null,
+    "overview": null,
+    "pay_schedule": "Hourly",
+    "submission_deadline": "2018-07-14",
+    "supervisor_title": null,
+    "term_of_service_agreement": true,
+    "total_anticipated_compensation": null,
+    "years_experience": null,
+  },
+  "departments": Array [
+    null,
+  ],
+  "hiring_team": Object {
+    "coordinators": Array [],
+    "hiring_managers": Array [
+      Object {
+        "employee_id": "139041117",
+        "first_name": "Kid",
+        "id": 776851,
+        "last_name": "Kane",
+      },
+    ],
+    "recruiters": Array [],
+    "sourcers": Array [],
+  },
+  "id": 100001,
+  "name": "Roman Test Job",
+  "notes": "Looking for the best!",
+  "offices": Array [
+    Object {
+      "id": 27259,
+      "name": "PGA of America Nat'l Office Headquarters",
+    },
+  ],
+  "opened_at": "2018-07-13T14:58:20.674Z",
+  "openings": Array [
+    Object {
+      "application_id": null,
+      "close_reason": null,
+      "closed_at": null,
+      "id": 1931104,
+      "opened_at": "2018-07-13T14:58:20.299Z",
+      "opening_id": null,
+      "status": "open",
+    },
+  ],
+  "requisition_id": null,
+  "status": "open",
+}
+`;
+
+exports[`Job Model can update job 1`] = `
+Object {
+  "additionalIncome": null,
+  "applicantGroup": "PGA Professional and General Public",
+  "applyVia": "PGA.org Website",
+  "baseCompensation": 10,
+  "baseCompensationMax": null,
+  "benefits": null,
+  "contact": Object {
+    "email": null,
+    "name": null,
+    "title": null,
+  },
+  "createdAt": "2018-07-13T14:58:19.742Z",
+  "currentStep": "Removed",
+  "education": null,
+  "employmentType": "Seasonal",
+  "experienceRequired": null,
+  "hiringManager": Object {
+    "employeeId": "139041117",
+    "firstName": "Kid",
+    "id": 776851,
+    "lastName": "Kane",
+    "name": undefined,
+  },
+  "id": 100001,
+  "jobCategory": null,
+  "jobTitle": "Roman Test Job",
+  "offices": Array [
+    Object {
+      "id": 27259,
+      "name": "PGA of America Nat'l Office Headquarters",
+    },
+  ],
+  "openedAt": "2018-07-13T14:58:20.674Z",
+  "openings": Array [
+    Object {
+      "id": 1931104,
+      "openedAt": "2018-07-13T14:58:20.299Z",
+      "status": "open",
+    },
+  ],
+  "overview": null,
+  "paySchedule": "Hourly",
+  "responsibilities": null,
+  "status": "open",
+  "submissionDeadline": "2018-07-14",
+  "termOfServiceAgreement": true,
+  "totalCompensation": null,
+  "userId": undefined,
+  "website": null,
+  "yearsExperience": null,
+}
+`;
+
+exports[`Job Model getJobsPostedBy 1`] = `
+Array [
+  Object {
+    "additionalIncome": null,
+    "applicantGroup": "",
+    "applyVia": null,
+    "baseCompensation": 14,
+    "baseCompensationMax": 55,
+    "benefits": "free rounds",
+    "contact": Object {
+      "email": "jnewkirk@pgahq.com",
+      "name": "John Newkirk",
+      "title": "PGA Pro",
+    },
+    "createdAt": "2018-06-14T21:41:58.000Z",
+    "currentStep": "Completed",
+    "education": Array [
+      "bachelor's",
+    ],
+    "employmentType": "Hourly",
+    "experienceRequired": "2 years",
+    "hiringManager": Object {
+      "employeeId": null,
+      "firstName": null,
+      "id": null,
+      "lastName": null,
+    },
+    "id": 334,
+    "jobCategory": "Seasonal",
+    "jobTitle": "PGA Pro",
+    "offices": Array [
+      Object {
+        "city": undefined,
+        "id": 123,
+        "name": "PGAHQ",
+        "state": undefined,
+        "zip": undefined,
+      },
+    ],
+    "openedAt": "2018-06-14T21:41:58.000Z",
+    "overview": "",
+    "paySchedule": "",
+    "responsibilities": "Golf professional",
+    "status": "open",
+    "submissionDeadline": "2018-06-28",
+    "termOfServiceAgreement": false,
+    "totalCompensation": 66,
+    "website": "http://website.com/",
+    "yearsExperience": "2 years",
+  },
+]
+`;

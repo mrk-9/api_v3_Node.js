@@ -1,0 +1,6 @@
+extend type Query {
+  # get job attachment presigned URL
+  s3PostPolicy: S3PostPolicy
+  # get profile image presigned URL
+  profileImageS3Policy: S3PostPolicy
+}

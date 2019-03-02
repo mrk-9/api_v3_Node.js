@@ -1,0 +1,19 @@
+type Journal {
+  # Journal Submission ID
+  id: ID!
+  # Date
+  date: Date
+  # Journal Entries
+  journalEntries: [JournalEntry]
+  # Ledger ID
+  ledgerId: ID
+  # Source
+  source: String
+  # Submission Status
+  status: String
+  # Submission error message
+  error: String
+  # The date and time when the Journal was created
+  createdAt: DateTime
+}
+

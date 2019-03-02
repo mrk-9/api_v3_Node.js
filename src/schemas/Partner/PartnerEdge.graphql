@@ -1,0 +1,6 @@
+type PartnerEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The Partner
+  node: Partner
+}

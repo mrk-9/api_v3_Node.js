@@ -1,0 +1,6 @@
+type JobApplicationAttachment {
+    # filename
+    filename: String!
+    # type
+    type: String!
+}

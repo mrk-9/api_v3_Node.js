@@ -1,0 +1,21 @@
+type CareerConsultant {
+  # Career Consultant Phone Number
+  phone: PhoneNumber
+  # Career Consultant Full Name
+  fullName: String
+  # Career Consultant Photo URL
+  photo: HttpUrl
+  # Career Consultant Email Address
+  email: EmailAddress
+}
+
+input CareerConsultantInput {
+  # Career Consultant Phone Number
+  phone: PhoneNumber
+  # Career Consultant Full Name
+  fullName: String
+  # Career Consultant Photo URL
+  photo: HttpUrl
+  # Career Consultant Email Address
+  email: EmailAddress
+}

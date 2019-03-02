@@ -1,0 +1,6 @@
+type EventEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The event
+  node: Event
+}

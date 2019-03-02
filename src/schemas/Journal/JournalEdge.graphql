@@ -1,0 +1,6 @@
+type JournalEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The Journal
+  node: Journal
+}

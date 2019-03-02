@@ -1,0 +1,18 @@
+type JobOffice {
+  # Office ID
+  id: ID!
+  # Office Name
+  name: String
+  # Location
+  location: String
+  # ID of Parent Office Nested Under
+  parentId: ID
+  # IDs of Children Offices
+  childIds: [ID]
+  # City
+  city: String
+  # State
+  state: String
+  # Zip
+  zip: String
+}

@@ -1,0 +1,23 @@
+type ProjectAccountSettings {
+  # Contract ID.
+  # Ex: 18-MW Section Revenue or 2018 PGA Champ
+  contractId: ID!
+  # Contract Line.
+  # Ex: Revenue
+  contractLine: NonEmptyString!
+  # Contract Type.
+  # Ex: Revenue Contract or PGA Tournament Revenue Contract
+  contractType: NonEmptyString!
+  # Event Type Name.
+  # Ex: Food and Beverage Ticket Sales or Entry Fee Revenue
+  eventTypeName: NonEmptyString!
+  # Organization Name
+  # Ex: Philadelphia Section PGA
+  organizationName: NonEmptyString!
+  # Project ID.
+  # Ex: 18MW-Drive_Chip_&_Putt or 2018 PGA Champ
+  projectId: ID!
+  # Task ID.
+  # Ex: Other Chalet Rev or 1-Entry_Fees
+  taskId: ID!
+}

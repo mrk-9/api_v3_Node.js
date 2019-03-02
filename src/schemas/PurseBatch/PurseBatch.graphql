@@ -1,0 +1,6 @@
+type PurseBatch {
+  id: ID!
+  event: Event!
+  payouts: [Payout!]!
+  createdAt: DateTime!
+}

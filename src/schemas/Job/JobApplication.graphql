@@ -1,0 +1,26 @@
+type JobApplication {
+  # id of candidate
+  id: ID
+  # id of job
+  jobId: ID
+  # candidates first name
+  firstName: String!
+  # candidates last name
+  lastName: String!
+  # email address
+  emailAddress: EmailAddress
+  # candidates phone number
+  phoneNumber: PhoneNumber
+  # website
+  website: HttpUrl
+  # Attachments
+  attachments: [JobApplicationAttachment]
+  # created at
+  createdAt: DateTime
+  # updated at
+  updatedAt: DateTime,
+  # application ID
+  applicationId: ID
+  # key of file in s3
+  key: String
+}

@@ -1,0 +1,354 @@
+extend type Query {
+  # Returns list of Members
+  members(
+    # Returns the first n members from the list. Must be within 1-100.
+    first: Int = 100,
+    # Returns the members that come after the given MemberEdge.cursor.
+    after: String
+  ): MemberConnection!
+  # Returns specific Member for the provided member number
+  member(id: ID!): Member
+  # Returns specific Member for the provided universal ID
+  memberByUid(universalId: ID!): Member
+  # Returns current user member
+  me: Member
+}
+
+extend type Mutation {
+  # Creates a Member with member properties provided.
+  createMember(input: AddMemberInput): Member
+  # This function overrides the matching Member using id provided in MemberInput with the rest of provided properties.
+  updateMember(id: ID!, input: UpdateMemberInput): Member
+  # This function updates member profile, visibility records, and social records
+  updateMemberProfile(id: ID!, uid: ID!, input: UpdateMemberProfileInput): Member
+  # This function update member profile visibility records
+  updateMemberProfileVisibility(id: ID!, uid: ID!, input: MemberViewingPermissionsInput): MemberViewingPermissions
+  # This function update member profile Social records
+  updateMemberSocial(id: ID!, uid: ID!, input: MemberSocialMediaInput): MemberSocialMedia
+  # Deletes Member matching provided id.
+  deleteMember(id: ID!): Member
+  # Update member user role
+  updateRole(id: ID!, role: UserRole!): Member
+}
+
+input UpdateMemberProfileInput {
+  id: ID
+  # Member display name
+  displayName: String
+  # Phone Number
+  publicPhone: PhoneNumber
+  # Primary Cell Phone Number
+  publicMobile: PhoneNumber
+  # Primary Email
+  publicEmail: String
+  # Member expertise
+  expertise: [MemberExpertiseInput]
+  # official member certifications
+  officialCertifications: [MemberCertificationInput]
+  # official member certifications
+  certifications: [MemberCertificationInput]
+  # member certifications not issued by PGA
+  personalCertifications: [MemberCertificationInput]
+  # official member awards
+  officialAwards: [MemberAwardInput]
+  # official member awards
+  awards: [MemberAwardInput]
+  # member awards not issued by PGA
+  personalAwards: [MemberAwardInput]
+  # official member affiliations
+  officialAffiliations: [MemberAffiliationInput]
+  # official member affiliations
+  affiliations: [MemberAffiliationInput]
+  # member affiliations not issued by PGA
+  personalAffiliations: [MemberAffiliationInput]
+  # member overview
+  overview: String
+  # viewing Permissions
+  viewingPermissions: MemberViewingPermissionsInput
+  # social
+  social: [MemberFullSocialMediaInput]
+  # Greenhouse ID
+  greenhouseId: Int
+}
+
+input AddMemberInput {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  class: MemberClass
+  type: MemberType
+  informalName: String
+  # Member display name
+  displayName: String
+  photo: String
+  certified: Boolean
+  masterProfessional: Boolean
+  sectionId: ID!
+  greenhouseId: Int
+  universalId: ID!
+  fromDate: String
+  expireDate: String
+  # Member Suspended
+  suspended: Boolean
+  # Member Birthdate
+  birthdate: Date
+  # Member Gender
+  gender: Gender
+  # Phone Number
+  phoneNumber: PhoneNumber
+  # public phone number
+  publicPhone: PhoneNumber
+  # Primary Cell Phone Number
+  primaryMobile: PhoneNumber
+  # public mobile
+  publicMobile: PhoneNumber
+  # Primary Email
+  primaryEmail: String
+  # Public Email
+  publicEmail: String
+  # Member Class Description
+  memberClassDescription: String
+  # Home Address
+  address: AddressInput
+  # Primary Facility ID
+  primaryFacilityId: ID
+  # Associated Facility IDs
+  facilityIds: [ID]
+  # Primary Facility Universal ID
+  primaryFacilityUid: ID
+  # Associated Facility Universal IDs
+  facilityUids: [ID]
+  # Member Education Profile Information
+  education: EducationProfileInput
+  # viewing permissions
+  viewingPermissions: MemberViewingPermissionsInput
+  # member expertise
+  expertise: [MemberExpertiseInput]
+  # member social media info
+  social: MemberSocialMediaInput
+  # official member certifications
+  officialCertifications: [MemberCertificationInput]
+  # official member certifications
+  certifications: [MemberCertificationInput]
+  # member certifications not issued by PGA
+  personalCertifications: [MemberCertificationInput]
+  # official member awards
+  officialAwards: [MemberAwardInput]
+  # official member awards
+  awards: [MemberAwardInput]
+  # member awards not issued by PGA
+  personalAwards: [MemberAwardInput]
+  # official member affiliations
+  officialAffiliations: [MemberAffiliationInput]
+  # official member affiliations
+  affiliations: [MemberAffiliationInput]
+  # member affiliations not issued by PGA
+  personalAffiliations: [MemberAffiliationInput]
+  # member overview
+  overview: String
+}
+
+input UpdateMemberInput {
+  id: ID
+  firstName: String
+  lastName: String
+  class: MemberClass
+  type: MemberType
+  informalName: String
+  # Member display name
+  displayName: String
+  photo: String
+  certified: Boolean
+  masterProfessional: Boolean
+  sectionId: ID
+  greenhouseId: Int
+  universalId: ID
+  fromDate: String
+  expireDate: String
+  # Member Birthdate
+  birthdate: Date
+  fromDate: String
+  expireDate: String
+  # Member Suspended
+  suspended: Boolean
+  # Member Birthdate
+  birthdate: Date
+  # Member Gender
+  gender: Gender
+  # Phone Number
+  phoneNumber: PhoneNumber
+  # public phone number
+  publicPhone: PhoneNumber
+  # Primary Cell Phone Number
+  primaryMobile: PhoneNumber
+  # public mobile phone
+  publicMobile: PhoneNumber
+  # Primary Email
+  primaryEmail: String
+  # Public Email
+  publicEmail: String
+  # Member Class Description
+  memberClassDescription: String
+  # Home Address
+  address: AddressInput
+  # Primary Facility ID
+  primaryFacilityId: ID
+  # Associated Facility IDs
+  facilityIds: [ID]
+  # Primary Facility Universal ID
+  primaryFacilityUid: ID
+  # Associated Facility Universal IDs
+  facilityUids: [ID]
+  # Member Education Profile Information
+  education: EducationProfileInput
+  # Member viewing permissions
+  viewingPermissions: MemberViewingPermissionsInput
+  # Member expertise
+  expertise: [MemberExpertiseInput]
+  # Member social media info
+  social: MemberSocialMediaInput
+  # official member certifications
+  officialCertifications: [MemberCertificationInput]
+  # official member certifications
+  certifications: [MemberCertificationInput]
+  # member certifications not issued by PGA
+  personalCertifications: [MemberCertificationInput]
+  # official member awards
+  officialAwards: [MemberAwardInput]
+  # official member awards
+  awards: [MemberAwardInput]
+  # member awards not issued by PGA
+  personalAwards: [MemberAwardInput]
+  # official member affiliations
+  officialAffiliations: [MemberAffiliationInput]
+  # official member affiliations
+  affiliations: [MemberAffiliationInput]
+  # member affiliations not issued by PGA
+  personalAffiliations: [MemberAffiliationInput]
+  # member overview
+  overview: String
+}
+
+input EducationProfileInput {
+  # Education Profile Current Level
+  currentLevel: String
+  # Education Company Name
+  companyName: String
+  # Subscriptions to Education Programs
+  requirements: [EducationRequirementInput]
+  levels: [EducationLevelInput]
+  subscriptions: [EducationSubscriptionInput]
+}
+
+input EducationSubscriptionInput {
+  productId: ID!
+  description: String!
+  # Date Subscription was purshased
+  startDate: Date!
+  # Date Subscription expires
+  endDate: Date!
+}
+
+input EducationRequirementInput {
+  requireId: String!
+  levelCd: EDLevelCode!
+  reasonCd: String
+  completeDate: Date
+  score: Int
+  remarks: String
+}
+
+input EducationLevelInput {
+  levelCd: EDLevelCode!
+  completeCd: String
+  startDate: Date
+  endDate: Date
+  remarks: String
+}
+
+input MemberViewingPermissionsInput {
+  # allow members to view certs
+  viewCertificationsMember: Boolean
+  # allow public to view certs
+  viewCertificationsPublic: Boolean
+  # allow public to view phone number
+  viewPhonePublic: Boolean
+  # allow members to view phone number
+  viewPhoneMember: Boolean
+  # allow public to view address
+  viewAddressPublic: Boolean
+  # allow members to view address
+  viewAddressMember: Boolean
+  # allow public to view expertise
+  viewExpertisePublic: Boolean
+  # allow members to view expertise
+  viewExpertiseMember: Boolean
+  # allow public to view email
+  viewEmailPublic: Boolean
+  # allow members to view email
+  viewEmailMember: Boolean
+  # allow public to view mobile
+  viewMobilePublic: Boolean
+  # allow members to view mobile
+  viewMobileMember: Boolean
+  # allow public to view affiliations
+  viewAffiliationsPublic: Boolean
+  # allow members to view affiliations
+  viewAffiliationsMember: Boolean
+  # allow public to view awards
+  viewAwardsPublic: Boolean
+  # allow members to view awards
+  viewAwardsMember: Boolean
+}
+
+input MemberExpertiseInput {
+  # id of expertise
+  id: ID!
+  # name of expertise
+  name: String
+}
+
+input MemberFullSocialMediaInput {
+  # id of social media
+  id: Int
+  # link of social media
+  link: String
+  # name of social media
+  name: String
+}
+
+input MemberSocialMediaInput {
+  # facebook member info
+  facebook: String
+  # linkedin member info
+  linkedin: String
+  # twitter member info
+  twitter: String
+  # youtube member info
+  youtube: String
+  # instagram member info
+  instagram: String
+  # website member info
+  website: String
+}
+
+input MemberCertificationInput {
+  # description of cert
+  description: String
+  # effective year of cert
+  effectiveYear: Int
+}
+
+input MemberAwardInput {
+  # description of award
+  description: String
+  # effective year of award
+  effectiveYear: Int
+}
+
+input MemberAffiliationInput {
+  # description of affiliation
+  description: String
+  # effective year of affiliation
+  effectiveYear: Int
+}

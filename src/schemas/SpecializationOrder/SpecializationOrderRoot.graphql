@@ -1,0 +1,4 @@
+
+extend type Mutation {
+  register(id: ID!, productCode: EDLevelCode!): SpecializationOrder
+}

@@ -1,0 +1,6 @@
+type PaymentTypeConnection {
+  # A list of edges
+  edges: [PaymentTypeEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

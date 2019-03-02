@@ -1,0 +1,34 @@
+extend type Mutation {
+  # Creates a Purse Batch
+  createPurseBatch(input: AddPurseBatch): PurseBatch
+}
+extend type Query {
+  # Check event player
+  checkEventPlayer(input: EventPlayerInput): EventPlayer
+}
+
+input PayoutInput {
+  memberNumber: ID
+  firstName: NonEmptyString!
+  middleInitial: String
+  lastName: String
+  taxId: NonEmptyString!
+  amount: Money!
+  memo: String
+  address: AddressInput
+}
+
+input AddPurseBatch {
+  id: ID!
+  eventId: ID!
+  payouts: [PayoutInput!]!
+}
+
+input EventPlayerInput {
+  memberNumber: ID
+  firstName: NonEmptyString!
+  middleInitial: String
+  lastName: String
+  taxId: NonEmptyString!
+  address: AddressInput
+}

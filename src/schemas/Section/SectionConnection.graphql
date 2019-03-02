@@ -1,0 +1,6 @@
+type SectionConnection {
+  # List of connection edges
+  edges: [SectionEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

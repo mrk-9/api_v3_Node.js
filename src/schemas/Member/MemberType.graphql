@@ -1,0 +1,17 @@
+# Valid Member Types
+enum MemberType {
+  # Member
+  MB
+  # Student
+  ST
+  # Apprentice
+  AP
+  # Public Employer
+  PE
+  # Prequalifer
+  PQ
+  # Qualifier Eligible
+  QE
+  # Terminated Apprentice
+  TA
+}

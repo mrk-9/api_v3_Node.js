@@ -1,0 +1,12 @@
+type JobPermissions {
+    # ID of facility permission
+    id: ID!
+    # ID of facility
+    officeId: Int
+    # ID of Department
+    departmentId: Int
+    # ID of User Role
+    userRoleId: Int
+    # facility name
+    facilityName: String
+}

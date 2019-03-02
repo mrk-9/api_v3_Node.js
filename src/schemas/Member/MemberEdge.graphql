@@ -1,0 +1,6 @@
+type MemberEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The member
+  node: Member
+}

@@ -1,0 +1,72 @@
+enum EDLevelCode {
+  # Specialization Coursework
+  M1
+  # Golf Operation Project
+  MO2
+  # Teaching and Couaching Project
+  MT2
+  # Excecutive Management Project
+  ME2
+  # Level 1: PGM 5-Year Lapse	
+  P1
+  # RGPTP1	
+  R1
+  # RGPTP2	
+  R2
+  # RGPTP3	
+  R3
+  # Transition Level 1	
+  T1
+  # Transition Level 2	
+  T2
+  # Transition Level 3	
+  T3
+  # Pre Qualifier Level 0	
+  N0
+  # Level 1	
+  N1
+  # Level 2	
+  N2
+  # Level 3	
+  N3
+  # Pre Qualifier Level 0	
+  U0
+  # Level 1	
+  U1
+  # Level 2	
+  U2
+  # Level 3	
+  U3
+  # Level 2	
+  X2
+  # Pre Qualifier Level 0	
+  X0
+  # Level 1	
+  X1
+  # Level 3	
+  X3
+  # Level 0	
+  A0
+  # Level 1	
+  A1
+  # Level 2 - Executive Management	
+  AE2
+  # Level 3 - Executive Management	
+  AE3
+  # Level 2 - Golf Operations	
+  AO2
+  # Level 3 - Golf Operations	
+  AO3
+  # Level 2 - Teaching	
+  AT2
+  # Level 3 - Teaching	
+  AT3
+  # Pre Qualifier Level 0	
+  S0
+  # Level 1	
+  S1
+  # Level 2	
+  S2
+  # Level 3	
+  S3
+}

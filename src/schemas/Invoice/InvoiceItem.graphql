@@ -1,0 +1,14 @@
+type InvoiceItem {
+  # Item Product
+  product: Product!
+  # Item quantity
+  quantity: Int!
+  # Item unit price
+  price: Money!
+  # Item total before taxes
+  subtotal: Money!
+  # Item total tax amount
+  tax: Money!
+  # Item total amount including taxes
+  total: Money!
+}

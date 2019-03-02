@@ -1,0 +1,20 @@
+{
+  "sub": "34753627",
+  "email": "jnewkirk@pgahq.com",
+  "preferred_username": "newkirk",
+  "name": "John Newkirk",
+  "updated_at": "2018-04-02T17:33:26.211Z",
+  "given_name": "John",
+  "family_name": "Newkirk",
+  "title": "03615121",
+  "custom_fields": {
+    "EntID": "03615121",
+    "entity_id": "03615121"
+  },
+  "nonce": "3b8771557ed54988882ac7b4756a6fc6",
+  "at_hash": "_CjXA0VxvUmvxYFo4dm3LQ",
+  "iat": 1522690408,
+  "exp": 1522697608,
+  "aud": "81bb0ab0-047e-0136-cf9f-06fe245b12c096594",
+  "iss": "https://openid-connect.onelogin.com/oidc"
+}

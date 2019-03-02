@@ -1,0 +1,7 @@
+type MemberMsrCycle {
+  cycleCode: String
+  startDate: Date
+  endDate: Date
+  pdpSerial: Int
+  cohortCode: String
+}

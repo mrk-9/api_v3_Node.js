@@ -1,0 +1,16 @@
+type PaymentType {
+  # PaymentType UUID
+  id: ID!
+  # Name of payment type
+  name: NonEmptyString!
+  # Ledger ID
+  ledgerId: ID!
+  # Payment Type Receivables Account ID
+  clearingAccountId: ID!
+  # Payment Type Section
+  section: Section
+  # The date and time when the PaymentType was created
+  createdAt: DateTime
+  # The date and time when the PaymentType was last updated
+  updatedAt: DateTime
+}

@@ -1,0 +1,18 @@
+type MemberMsrHistory {
+  # Category
+  category: String
+  # added date
+  addedDate: Date
+  # activity code
+  activityCode: String
+  # Number of Credits Accepted
+  creditsAccepted: Int
+  # Number of credits Applied for
+  creditsAppliedFor: Int
+  # Description of credit
+  description1: String
+  # type of credit
+  type: String
+  # Secondary description
+  description2: String
+}

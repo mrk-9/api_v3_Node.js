@@ -1,0 +1,8 @@
+type EventPlayer {
+  memberNumber: ID
+  firstName: NonEmptyString!
+  middleInitial: String
+  lastName: String
+  taxId: NonEmptyString!
+  address: Address
+}

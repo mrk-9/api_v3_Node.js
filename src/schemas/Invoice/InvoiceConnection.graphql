@@ -1,0 +1,6 @@
+type InvoiceConnection {
+  # List of connection edges
+  edges: [InvoiceEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

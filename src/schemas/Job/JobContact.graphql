@@ -1,0 +1,8 @@
+type JobContact {
+  # Name
+  name: String
+  # Title
+  title: String
+  # Email
+  email: EmailAddress
+}

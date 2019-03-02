@@ -1,0 +1,63 @@
+extend type Query {
+  # Look up Invoice by ID
+  invoice(id: ID!): Invoice
+  # Look up invoices
+  invoices(
+    # Returns the first n invoices from the list. Must be within 1-100.
+    first: Int = 100,
+    # Returns the invoices that come after the given InvoiceEdge.cursor.
+    after: String
+  ): InvoiceConnection!
+}
+
+extend type Mutation {
+  # Creates an Invoice
+  createInvoice(input: AddInvoiceInput): Invoice
+  # Delete an Invoice
+  deleteInvoice(id: ID!): Invoice
+  # Trigger invoice aggregator for given batch date
+  runInvoiceAggregator(batchDate: Date): LambdaResponse
+}
+
+input AddInvoiceInput {
+  # Invoice number.
+  invoiceNumber: ID!
+  # Invoice amount before taxes
+  subtotal: Money!
+  # Invoice tax amount
+  tax: Money!
+  # Invoice total amount, including taxes
+  total: Money!
+  # Invoice line items
+  items: [InvoiceItemInput!]!
+  # Invoice payments
+  payments: [InvoicePaymentInput!]!
+  # Invoice date
+  date: Date
+  # Invoice URL
+  invoiceUrl: HttpUrl
+}
+
+input InvoiceItemInput {
+  # Item product ID
+  productId: ID!
+  # Item quantity
+  quantity: Int = 1
+  # Item unit price
+  price: Money!
+  # Item total before taxes
+  subtotal: Money
+  # Item total tax amount
+  tax: Money!
+  # Item total amount including taxes
+  total: Money!
+}
+
+input InvoicePaymentInput {
+  # Payment type ID
+  typeId: ID!
+  # Payment ID from payment processor
+  transactionNumber: ID
+  # Payment amount
+  amount: Money!
+}

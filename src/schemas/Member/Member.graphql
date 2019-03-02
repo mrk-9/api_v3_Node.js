@@ -1,0 +1,102 @@
+type Member {
+  # Member number
+  id: ID!
+  # Member first name
+  firstName: String
+  # Member last name
+  lastName: String
+  # Member class
+  class: MemberClass
+  # Member type
+  type: MemberType
+  # Member informal name
+  informalName: String
+  # Member display name
+  displayName: String
+  # URL of member profile photo
+  photo: String
+  # Member certification status
+  certified: Boolean
+  # Master Professional certification status
+  masterProfessional: Boolean
+  # Member Section
+  section: Section
+  greenhouseId: Int
+  # Member Universal ID
+  universalId: ID
+  fromDate: String
+  # Member expiration date
+  expireDate: String
+  # Date and time when the Member was created
+  createdAt: DateTime
+  # Date and time when the Member was last updated
+  updatedAt: DateTime
+  # Member Suspended
+  suspended: Boolean
+  # Member Birthdate
+  birthdate: Date
+  # Member Gender
+  gender: Gender
+  # Phone Number
+  phoneNumber: PhoneNumber
+  # public phone number
+  publicPhone: PhoneNumber
+  # Primary Cell Phone Number
+  primaryMobile: PhoneNumber
+  # Public Mobile phone number
+  publicMobile: PhoneNumber
+  # Member Class Description
+  memberClassDescription: String
+  # msr
+  msr: [MemberMsr]
+  # current msr status
+  msrStatus: MemberMsrStatus
+  # Returns msr history of member
+  msrHistory: [MemberMsrHistory]
+  # member dues info
+  dues: [MemberDues]
+  # User Role
+  role: UserRole
+  # Primary Email
+  primaryEmail: String
+  # Public Email
+  publicEmail: String
+  # Home Address
+  address: Address
+  # Primary Facility
+  primaryFacility: Facility
+  # Associated Facilities
+  facilities: [Facility]
+  # Student Education Profile
+  education: MemberEducationProfile
+  # viewing permissions for public directory
+  viewingPermissions: MemberViewingPermissions
+  # Jobs Member has posted
+  myJobs: [Job]
+  # expertise
+  expertise: [MemberExpertise]
+  # social media info
+  social: MemberSocialMedia
+  # official member certifications
+  officialCertifications: [MemberCertification]
+  # official member certifications
+  certifications: [MemberCertification]
+  # member certifications not issued by PGA
+  personalCertifications: [MemberCertification]
+  # official member awards
+  officialAwards: [MemberAward]
+  # official member awards
+  awards: [MemberAward]
+  # member awards not issued by PGA
+  personalAwards: [MemberAward]
+  # official member affiliations
+  officialAffiliations: [MemberAffiliations]
+  # official member affiliations
+  affiliations: [MemberAffiliations]
+  # member affiliations not issued by PGA
+  personalAffiliations: [MemberAffiliations]
+  # member overview
+  overview: String
+  # Determines if a member can be a JL captain
+  canBeJuniorLeagueCaptain: Boolean
+}

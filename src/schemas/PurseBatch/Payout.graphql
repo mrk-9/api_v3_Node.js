@@ -1,0 +1,10 @@
+type Payout {
+  memberNumber: ID
+  firstName: NonEmptyString!
+  middleInitial: String
+  lastName: String
+  taxId: NonEmptyString!
+  amount: Money!
+  memo: String
+  address: Address
+}

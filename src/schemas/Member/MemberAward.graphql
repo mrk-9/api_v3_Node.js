@@ -1,0 +1,6 @@
+type MemberAward {
+  # description of award
+  description: String
+  # effective year of award
+  effectiveYear: Int
+}

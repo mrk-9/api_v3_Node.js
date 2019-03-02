@@ -1,0 +1,6 @@
+type MemberDues {
+  # Dues balance
+  duesBalance: Money
+  # Due date for dues
+  dueDate: DateTime
+}

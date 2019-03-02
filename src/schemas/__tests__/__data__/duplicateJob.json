@@ -1,0 +1,46 @@
+{
+  "id": "100001",
+  "jobTitle": "Roman Test Job_Copy",
+  "status": "open",
+  "userId": null,
+  "offices": [
+    {
+      "id": "27259",
+      "name": "PGA of America Nat'l Office Headquarters"
+    }
+  ],
+  "hiringManager": {
+    "id": "776851",
+    "firstName": "Kid",
+    "lastName": "Kane",
+    "employeeId": "139041117"
+  },
+  "applicantGroup": "PGA Professional Only",
+  "jobCategory": "Accounting / Finance",
+  "employmentType": "Seasonal",
+  "yearsExperience": "2",
+  "submissionDeadline": "2018-12-31",
+  "baseCompensation": "10.00",
+  "baseCompensationMax": null,
+  "paySchedule": "Hourly",
+  "additionalIncome": null,
+  "totalCompensation": null,
+  "contact": { "name": "Roman", "title": "Developer", "email": "rfedoseev@pgahq.com" },
+  "education": null,
+  "applyVia": "PGA.org Website",
+  "website": null,
+  "overview": "demo",
+  "experienceRequired": null,
+  "responsibilities": null,
+  "benefits": null,
+  "termOfServiceAgreement": true,
+  "currentStep": "Removed",
+  "createdAt": "2018-07-13T14:58:19.742Z",
+  "openings": [
+    {
+      "id": "1931104",
+      "status": "open",
+      "openedAt": "2018-07-13T14:58:20.299Z"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Greenhouse Harvest API Connector can create job permissions 1`] = `"method: PUT, endpoint:users/123/permissions/future_jobs, data:{\\"data\\":{\\"office_id\\":\\"345\\",\\"user_role_id\\":\\"678\\"}}"`;
+
+exports[`Greenhouse Harvest API Connector can find user by email 1`] = `"method: GET, endpoint:users?email=test@email.com"`;
+
+exports[`Greenhouse Harvest API Connector can get job custom fields 1`] = `"method: GET, endpoint:custom_fields/job"`;
+
+exports[`Greenhouse Harvest API Connector can get jobPermissions 1`] = `"method: GET, endpoint:users/undefined/permissions/future_jobs?per_page=125"`;
+
+exports[`Greenhouse Harvest API Connector can patch job 1`] = `"method: PATCH, endpoint:jobs/144371, data:{\\"id\\":144371,\\"name\\":\\"New job name\\",\\"requisition_id\\":\\"1\\",\\"notes\\":\\"Here are some notes\\",\\"team_and_responsibilities\\":\\"Info\\",\\"how_to_sell_this_job\\":\\"the snacks\\",\\"office_ids\\":[1556],\\"department_id\\":74,\\"custom_fields\\":[{\\"id\\":1234,\\"value\\":\\"Some new value\\"},{\\"name_key\\":\\"salary_range\\",\\"min_value\\":100000,\\"max_value\\":150000,\\"unit\\":\\"USD\\"},{\\"id\\":5678,\\"delete_value\\":\\"true\\"}]}"`;
+
+exports[`Greenhouse Harvest API Connector can post job 1`] = `"method: POST, endpoint:jobs, data:{\\"template_job_id\\":12345,\\"number_of_openings\\":2,\\"job_post_name\\":\\"External Name That Appears On Job Boards\\",\\"job_name\\":\\"Internal Name That Appears On Hiring Plans\\",\\"department_id\\":123,\\"office_ids\\":[234,345],\\"requisition_id\\":\\"abc-123\\",\\"opening_ids\\":[\\"abc-123-1\\",\\"abc-123-2\\"]}"`;
+
+exports[`Greenhouse Harvest API Connector can post user 1`] = `"method: POST, endpoint:users, data:{\\"user\\":{\\"first_name\\":\\"first\\",\\"last_name\\":\\"last\\",\\"email\\":\\"first@email.com\\"}}"`;
+
+exports[`Greenhouse Harvest API Connector can put hiring team 1`] = `"method: PUT, endpoint:jobs/a1/hiring_team, data:{\\"hiring_managers\\":[{\\"user_id\\":1234}],\\"sourcers\\":[{\\"user_id\\":4567}],\\"recruiters\\":[{\\"user_id\\":5678,\\"responsible_for_future_candidates\\":true,\\"responsible_for_active_candidates\\":true,\\"responsible_for_inactive_candidates\\":true},{\\"user_id\\":6789,\\"responsible_for_future_candidates\\":false,\\"responsible_for_active_candidates\\":false,\\"responsible_for_inactive_candidates\\":false}],\\"coordinators\\":[{\\"user_id\\":7890,\\"responsible_for_future_candidates\\":true,\\"responsible_for_active_candidates\\":false,\\"responsible_for_inactive_candidates\\":false}]}"`;
+
+exports[`Harvest http connection calls http lib correctly 1`] = `
+Object {
+  "data": undefined,
+  "headers": Object {
+    "Authorization": "Basic dW5kZWZpbmVkOg==",
+    "Content-Type": "application/json",
+    "On-Behalf-Of": 1,
+  },
+  "method": "TEST_SUCCESS",
+  "url": "undefinedundefined",
+}
+`;

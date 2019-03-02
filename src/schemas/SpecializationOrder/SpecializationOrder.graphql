@@ -1,0 +1,7 @@
+type SpecializationOrder {
+  id: ID!
+  # Education specific Products
+  product: SpecializationProduct!
+  # Date and time when the SpecializationOrder was created
+  createdAt: DateTime
+}

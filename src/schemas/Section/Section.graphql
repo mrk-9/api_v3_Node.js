@@ -1,0 +1,33 @@
+# A section
+type Section {
+  # Globally unique ID
+  id: ID!
+  # Section name
+  name: String!
+  # Section events
+  events(
+    # Returns the first n events for this section. Must be within 1-100
+    first: Int = 100,
+    # Returns the events that come after this cursor
+    after: String
+  ): EventConnection!
+  # Section payment types
+  paymentTypes(
+    # Returns the first n payment types for this section. Must be within 1-100
+    first: Int = 100,
+    # Returns the payment types that come after this cursor
+    after: String
+  ): PaymentTypeConnection!
+  # The date and time when the Section was created
+  createdAt: DateTime
+  # The date and time when the Section was last updated
+  updatedAt: DateTime
+  # Section Address
+  address: Address
+  # Section Career Consultant
+  careerConsultant: CareerConsultant
+  # Section/University Internship Coordinator
+  internshipCoordinator: InternshipCoordinator
+  # primary Facility
+  primaryFacility: Facility
+}

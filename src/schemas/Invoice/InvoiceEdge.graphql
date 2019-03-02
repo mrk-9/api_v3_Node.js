@@ -1,0 +1,6 @@
+type InvoiceEdge {
+  # Cursor for use in pagination
+  cursor: String!
+  # The invoice
+  node: Invoice
+}

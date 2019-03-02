@@ -1,0 +1,6 @@
+type MemberCertification {
+  # description of certification
+  description: String
+  # effective year of certification
+  effectiveYear: Int
+}

@@ -1,0 +1,4 @@
+type MemberMsrStatus {
+  cycle: MemberMsrCycle
+  credits: [MemberMsr]
+}

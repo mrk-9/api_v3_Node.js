@@ -1,0 +1,8 @@
+type JobGreenhouseUser {
+  # Greenhouse ID
+  id: ID!
+  # Greenhouse User First Name
+  firstName: String
+  # Greenhouse User Last Name
+  lastName: String
+}

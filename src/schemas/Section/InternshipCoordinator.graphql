@@ -1,0 +1,13 @@
+type InternshipCoordinator {
+  # Internship Coordinator Name
+  name: String
+  # Internship Coordinator Email Address
+  email: EmailAddress
+}
+
+input InternshipCoordinatorInput {	
+  # Internship Coordinator Name	
+  name: String	
+  # Internship Coordinator Email Address	
+  email: EmailAddress	
+}

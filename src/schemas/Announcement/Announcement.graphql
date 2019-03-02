@@ -1,0 +1,20 @@
+type Announcement {
+  # The title of the announcement
+  title: String!
+  # The message of the announcement
+  message: String!
+  # The button label text of the announcement
+  label: String
+  # The button link url of the announcement
+  link: String
+  # The user groups to send the alert
+  groups: [String]!
+  # The region section to send the alert
+  sections: [String]
+  # The slug title of the announcement
+  slug: String
+  # The date and time when the announcement was last updated
+  updatedDate: DateTime
+  # The date and time when the announcement was created
+  date: DateTime
+}

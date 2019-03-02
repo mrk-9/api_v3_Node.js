@@ -1,0 +1,10 @@
+type JobHiringManager {
+  # ID
+  id: ID
+  # First Name
+  firstName: String
+  # Last Name
+  lastName: String 
+  # Employee ID 
+  employeeId: ID
+}

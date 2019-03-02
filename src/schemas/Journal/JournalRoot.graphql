@@ -1,0 +1,9 @@
+extend type Query {
+  # Look up Journals
+  journals(
+    # Returns the first n Journals from the list. Must be within 1-100
+    first: Int = 100,
+    # Returns the Journals that come after the given JournalEdge.cursor.
+    after: String
+  ): JournalConnection!
+}

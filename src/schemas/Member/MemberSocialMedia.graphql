@@ -1,0 +1,14 @@
+type MemberSocialMedia {
+  # facebook member info
+  facebook: String
+  # linkedin member info
+  linkedin: String
+  # twitter member info
+  twitter: String
+  # youtube member info
+  youtube: String
+  # instagram member info
+  instagram: String
+  # website member info
+  website: String
+}

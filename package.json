@@ -1,0 +1,62 @@
+{
+  "name": "api-v3",
+  "version": "0.0.1",
+  "description": "PGA API v3",
+  "scripts": {
+    "create-seed": "node scripts/createSeed.js > scripts/seed.json",
+    "create-tables": "node scripts/createTables.js",
+    "generate-resource": "node_modules/.bin/hygen resource new --name",
+    "lint": "npx standard",
+    "sandbox-deploy": "git push origin +HEAD:sandbox",
+    "seed-tables": "node scripts/seedTables.js scripts/seed.json",
+    "start": "DYNAMODB_ENDPOINT=http://dynamodb:8000 sam local start-api --docker-network docker_default",
+    "test": "LOG_LEVEL=SILENT npx jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgahq/api-v3"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgahq/api-v3/issues"
+  },
+  "homepage": "https://github.com/pgahq/api-v3#readme",
+  "dependencies": {
+    "@pga/lambda-env": "0.0.2",
+    "@pga/logger": "^0.1.1",
+    "algoliasearch": "^3.30.0",
+    "apollo-server-lambda": "^1.4.0",
+    "aws-sdk": "^2.292.0",
+    "axios": "^0.18.0",
+    "currency.js": "^1.1.4",
+    "dataloader": "^1.4.0",
+    "graphql": "^0.13.2",
+    "graphql-iso-date": "^3.5.0",
+    "graphql-tools": "^3.1.1",
+    "jsonwebtoken": "^8.3.0",
+    "jwk-to-pem": "^2.0.0",
+    "lodash.set": "^4.3.2",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.23",
+    "ramda": "^0.25.0",
+    "uuid": "^3.3.2",
+    "validator": "^10.5.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "casual": "^1.5.19",
+    "hygen": "^1.6.2",
+    "jest": "^22.4.4",
+    "jest-junit": "^3.7.0",
+    "standard": "^11.0.1"
+  }
+}

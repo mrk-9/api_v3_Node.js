@@ -1,0 +1,7 @@
+# Pagination information on a connection
+type PageInfo {
+  # Indicates if there are pages before the current page.
+  hasPreviousPage: Boolean!
+  # Indicates if there are more pages to fetch.
+  hasNextPage: Boolean!
+}

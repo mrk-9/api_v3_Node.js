@@ -1,0 +1,166 @@
+extend type Query {
+  # Job by GreenhouseID
+  job(id: ID!): Job
+  # Job Custom Fields
+  jobCustomFields: [JobCustomField]
+  # Look up Future Job Permissions
+  jobPermissions(greenhouseId: ID!): [JobPermissions]
+  # Jobs By Greenhouse ID
+  jobsByGreenhouseUserId(greenhouseId: ID!): [Job]
+}
+
+extend type Mutation {
+  # Creates a job
+  createJob(input: AddJobInput): Job
+  # Creates a job application
+  createJobApplication(input: AddJobApplicationInput): JobApplication
+  # Update a job
+  updateJob(id: ID!, input: UpdateJobInput!): Job
+  # Duplicate a job
+  duplicateJob(id: ID!, jobTitle: NonEmptyString!): Job
+  # Creates a future job permission
+  createJobPermission(facilityId: ID!, greenhouseId: ID): JobPermissions
+  # Creates a Greenhouse User
+  createUser(input: AddJobGreenHouseUser!): JobGreenhouseUser
+}
+
+input AddJobApplicationInput {
+  # ID of job
+  jobId: ID!
+  # candidates first name
+  firstName: String!
+  # candidates last name
+  lastName: String!
+  # email address
+  emailAddress: EmailAddress
+  # candidates phone number
+  phoneNumber: PhoneNumber
+  # website
+  website: HttpUrl
+  # Attachments
+  attachments: [AttachmentInput]
+}
+
+input UpdateJobInput {
+  # Greenhouse ID of User
+  userId: ID
+  # Greenhouse ID of Office/Facility
+  office: ID
+  # Greenhouse ID of Applicant Group
+  applicantGroup: ID
+  # Greenhouse ID of Job Category
+  jobCategory: ID
+  # Job Title
+  jobTitle: String
+  # Greenhouse ID of Employment Type
+  employmentType: ID
+  # Greenhouse ID of Years of Experience
+  yearsExperience: ID
+  # Submission Deadline
+  submissionDeadline: Date
+  # Base Compensation
+  baseCompensation: Money
+  # Max Base Compensation
+  baseCompensationMax: Money
+  # Greenhouse ID of Pay Schedule
+  paySchedule: ID
+  # Any additional Income
+  additionalIncome: String
+  # Total Compensation
+  totalCompensation: Money
+  # Contact Name
+  contactName: String
+  # Contact Title
+  contactTitle: String
+  # Contact Phone Number
+  contactEmail: EmailAddress
+  # Greenhouse ID of Education
+  education: ID
+  # Greenhouse ID of Apply Via
+  applyVia: ID
+  # URL of External Website if Apply Via is "Facility Website" ID
+  website: HttpUrl
+  # Job Overview
+  overview: String
+  # Description of Experience Required
+  experienceRequired: String
+  # Description of Responsibilities
+  responsibilities: String
+  # Description of Benefits
+  benefits: String
+  # true if Job Creator agrees to terms, false otherwise
+  termOfServiceAgreement: Boolean
+  # Job current step
+  currentStep: JobStep
+}
+
+input AttachmentInput {
+  # key
+  key: String!
+  # filename
+  filename: String!
+  # type
+  type: String!
+}
+
+input AddJobInput {
+  # Greenhouse ID of User
+  userId: ID
+  # Greenhouse ID of Office/Facility
+  office: ID
+  # Greenhouse ID of Applicant Group
+  applicantGroup: ID
+  # Greenhouse ID of Job Category
+  jobCategory: ID
+  # Job Title
+  jobTitle: String
+  # Greenhouse ID of Employment Type
+  employmentType: ID
+  # Greenhouse ID of Years of Experience
+  yearsExperience: ID
+  # Submission Deadline
+  submissionDeadline: Date
+  # Base Compensation
+  baseCompensation: Money
+  # Max Base Compensation
+  baseCompensationMax: Money
+  # Greenhouse ID of Pay Schedule
+  paySchedule: ID
+  # Any additional Income
+  additionalIncome: String
+  # Total Compensation
+  totalCompensation: Money
+  # Contact Name
+  contactName: String
+  # Contact Title
+  contactTitle: String
+  # Contact Phone Number
+  contactEmail: EmailAddress
+  # Greenhouse ID of Education
+  education: ID
+  # Greenhouse ID of Apply Via
+  applyVia: ID
+  # URL of External Website if Apply Via is "Facility Website" ID
+  website: HttpUrl
+  # Job Overview
+  overview: String
+  # Description of Experience Required
+  experienceRequired: String
+  # Description of Responsibilities
+  responsibilities: String
+  # Description of Benefits
+  benefits: String
+  # true if Job Creator agrees to terms, false otherwise
+  termOfServiceAgreement: Boolean
+  # Job current step
+  currentStep: JobStep = Complete
+}
+
+input AddJobGreenHouseUser {
+  # Greenhouse User First Name
+  firstName: String
+  # Greenhouse User Last Name
+  lastName: String
+  # Greenhouse User Email Address
+  primaryEmail: EmailAddress!
+} 

@@ -1,0 +1,25 @@
+type S3PostPolicy {
+  #The action for the form POST request
+  url: HttpUrl
+  #Form field values required for successful upload to S3. Fieldnames are specified where they differ from the
+  fields: S3PostPolicyFields
+}
+
+type S3PostPolicyFields {
+  #The signing algorithm used to authenticate the request. fieldname: X-Amz-Algorithm
+  algorithm: String
+  #The destination S3 Bucket
+  bucket: String
+  #The credentials that you used to calculate the signature. fieldname: X-Amz-Credential
+  credential: String
+  #The date value specified in ISO8601. fieldname: X-Amz-Date
+  date: String
+  #Used to uniquely identify a file in an S3 Bucket. The key name of the uploaded object.
+  key: String
+  #The base64-encoded security policy that describes what is permitted in the request
+  policy: String
+  #A security token used by Amazon DevPay and session credentials fieldname: X-Amz-Security-Token
+  securityToken: String
+  #The HMAC-SHA256 hash of the security policy. fieldname: X-Amz-Signature
+  signature: String
+}

@@ -1,0 +1,13 @@
+# Valid Job Steps
+enum JobStep {
+  # New
+  New
+  # Information
+  Information
+  # Details
+  Details
+  # Complete
+  Complete
+  # Removed
+  Removed
+}

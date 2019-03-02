@@ -1,0 +1,12 @@
+type MemberMsr {
+  # MSR credits required
+  required: Int
+  # Type of MSR credits in object
+  label: String
+  # Number of MSR credits earned
+  earned: Int
+  # F-Class Members credits needed to recover Member Status
+  recovery: Int
+  # Number of credits earned towards recovery
+  new: Int
+}

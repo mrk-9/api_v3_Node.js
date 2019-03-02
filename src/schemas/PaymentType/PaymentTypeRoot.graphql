@@ -1,0 +1,49 @@
+extend type Query {
+  # Look up a PaymentType by its ID
+  paymentType(id: ID!): PaymentType
+  # Look up PaymentTypes
+  paymentTypes(
+    # Returns the first n PaymentTypes from the list. Must be within 1-100
+    first: Int = 100,
+    # Returns the PaymentTypes that come after the given PaymentTypeEdge.cursor.
+    after: String
+  ): PaymentTypeConnection!
+}
+
+extend type Mutation {
+  # Creates a PaymentType
+  createPaymentType(input: AddPaymentTypeInput): PaymentType
+  # Deletes a PaymentType
+  deletePaymentType(
+    # The PaymentType ID to delete
+    id: ID!
+  ): PaymentType
+  # Updates a PaymentType
+  updatePaymentType(
+    # The PaymentType ID to update
+    id: ID!,
+    input: UpdatePaymentTypeInput
+  ): PaymentType
+}
+
+input AddPaymentTypeInput {
+  # Name of payment type
+  name: NonEmptyString!
+  # Payment Type Section ID
+  sectionId: ID!
+  # Ledger ID
+  ledgerId: ID!
+  # Receivables General Ledger Account ID
+  clearingAccountId: ID!
+}
+
+input UpdatePaymentTypeInput {
+  # Name of payment type
+  name: NonEmptyString
+  # Payment Type Section ID
+  sectionId: ID
+  # Ledger ID
+  ledgerId: ID
+  # Receivables General Ledger Account ID
+  clearingAccountId: ID
+}

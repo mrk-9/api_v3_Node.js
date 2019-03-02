@@ -1,0 +1,8 @@
+type JobCustomFieldOption {
+  # Greenhouse ID
+  id: ID
+  # Name
+  name: String
+  # Numeric field used for ordering in Greenhouse
+  priority: Int
+}

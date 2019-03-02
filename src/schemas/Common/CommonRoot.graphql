@@ -1,0 +1,6 @@
+type Query {
+  # Return current code version
+  version: ID!
+}
+
+type Mutation

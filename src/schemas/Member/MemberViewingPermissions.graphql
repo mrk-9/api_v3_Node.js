@@ -1,0 +1,34 @@
+type MemberViewingPermissions {
+  # allow members to view certs
+  viewCertificationsMember: Boolean
+  # allow public to view certs
+  viewCertificationsPublic: Boolean
+  # allow public to view phone number
+  viewPhonePublic: Boolean
+  # allow members to view phone number
+  viewPhoneMember: Boolean
+  # allow public to view address
+  viewAddressPublic: Boolean
+  # allow members to view address
+  viewAddressMember: Boolean
+  # allow public to view expertise
+  viewExpertisePublic: Boolean
+  # allow members to view expertise
+  viewExpertiseMember: Boolean
+  # allow public to view email
+  viewEmailPublic: Boolean
+  # allow members to view email
+  viewEmailMember: Boolean
+  # allow public to view mobile
+  viewMobilePublic: Boolean
+  # allow members to view mobile
+  viewMobileMember: Boolean
+  # allow public to view affiliations
+  viewAffiliationsPublic: Boolean
+  # allow members to view affiliations
+  viewAffiliationsMember: Boolean
+  # allow public to view awards
+  viewAwardsPublic: Boolean
+  # allow members to view awards
+  viewAwardsMember: Boolean
+}

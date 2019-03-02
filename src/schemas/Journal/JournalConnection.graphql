@@ -1,0 +1,6 @@
+type JournalConnection {
+  # A list of edges
+  edges: [JournalEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

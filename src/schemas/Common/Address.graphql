@@ -1,0 +1,21 @@
+type Address {
+  address1: String
+  address2: String
+  address3: String
+  address4: String
+  city: String
+  country: String
+  state: String
+  zip: String
+}
+
+input AddressInput {
+  address1: String
+  address2: String
+  address3: String
+  address4: String
+  city: String
+  country: String
+  state: String
+  zip: String
+}

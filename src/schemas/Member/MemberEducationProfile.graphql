@@ -1,0 +1,38 @@
+type EducationSubscription {
+  productId: ID!
+  description: String!
+  # Date Subscription was purshased
+  startDate: Date!
+  # Date Subscription expires
+  endDate: Date!
+}
+
+type EducationRequirement {
+  requireId: String!
+  levelCd: EDLevelCode!
+  reasonCd: String
+  completeDate: Date
+  score: Int
+  remarks: String
+}
+
+type EducationLevel {
+  levelCd: EDLevelCode!
+  completeCd: String
+  startDate: Date
+  endDate: Date
+  remarks: String
+}
+
+type MemberEducationProfile {
+  # Education Profile Current Level
+  currentLevel: String
+  # Education Company Name
+  companyName: String
+  # Steps required to complete a Level
+  requirements: [EducationRequirement]
+  # Program Levels
+  levels: [EducationLevel]
+  # Subscriptions to Education Programs
+  subscriptions: [EducationSubscription]
+}

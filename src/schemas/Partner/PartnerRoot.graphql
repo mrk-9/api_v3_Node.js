@@ -1,0 +1,47 @@
+extend type Query {
+  # Look up a Partner by its ID
+  partner(id: ID!): Partner
+  # Look up Partners
+  partners(
+    # Returns the first n Partners from the list. Must be within 1-100
+    first: Int = 100,
+    # Returns the Partners that come after the given PartnerEdge.cursor.
+    after: String
+  ): PartnerConnection!
+}
+
+extend type Mutation {
+  # Creates a Partner
+  createPartner(input: AddPartnerInput): Partner
+  # Deletes a Partner
+  deletePartner(
+    # The Partner ID to delete
+    id: ID!
+  ): Partner
+  # Updates a Partner
+  updatePartner(
+    # The Partner ID to update
+    id: ID!,
+    input: UpdatePartnerInput
+  ): Partner
+}
+
+input AddPartnerInput {
+  #  Partner User ARN
+  id: ID!
+  # Name
+  displayName: NonEmptyString!
+  # User Role
+  role: UserRole!
+  # Section
+  sectionId: ID!
+}
+
+input UpdatePartnerInput {
+  # Name
+  displayName: NonEmptyString
+  # User Role
+  role: UserRole
+  # Section
+  sectionId: ID
+}

@@ -1,0 +1,21 @@
+type Event {
+  # Event UUID
+  id: ID!
+  # The name of the event
+  name: String!
+  # The event's section
+  section: Section
+  # Event products
+  products(
+    # Returns the first n products for this event. Must be within 1-100
+    first: Int = 100,
+    # Returns the products that come after this cursor
+    after: String
+  ): ProductConnection!
+  # Whether or not this event is closed
+  closed: Boolean!
+  # The date and time when the event was created
+  createdAt: DateTime
+  # The date and time when the event was last updated
+  updatedAt: DateTime
+}

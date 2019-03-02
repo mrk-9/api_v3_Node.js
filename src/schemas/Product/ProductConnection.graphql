@@ -1,0 +1,6 @@
+type ProductConnection {
+  # A list of edges
+  edges: [ProductEdge]
+  # Pagination information
+  pageInfo: PageInfo!
+}

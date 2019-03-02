@@ -1,0 +1,21 @@
+type Product {
+  # Product UUID
+  id: ID!
+  # Product name
+  name: NonEmptyString!
+  # Product event
+  event: Event
+  # Ledger ID
+  ledgerId: ID!
+  # Product Revenue ID
+  revenueAccountId: ID!
+  # Product Tax ID
+  taxAccountId: ID
+  # Project Account
+  projectAccount: ProjectAccountSettings!
+  # The date and time when the Product was created
+  createdAt: DateTime
+  # The date and time when the Product was last updated
+  updatedAt: DateTime
+}
+

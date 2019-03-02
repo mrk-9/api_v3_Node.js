@@ -1,0 +1,81 @@
+extend type Query {
+  # Look up a Product by its ID
+  product(id: ID!): Product
+  # Look up Products
+  products(
+    # Returns the first n Products from the list. Must be within 1-100
+    first: Int = 100,
+    # Returns the Products that come after the given ProductEdge.cursor.
+    after: String
+  ): ProductConnection!
+}
+
+extend type Mutation {
+  # Creates a Product
+  createProduct(input: AddProductInput): Product
+  # Deletes a Product
+  deleteProduct(
+    # The Product ID to delete
+    id: ID!
+  ): Product
+  # Updates a Product
+  updateProduct(
+    # The Product ID to update
+    id: ID!,
+    input: UpdateProductInput
+  ): Product
+}
+
+input ProjectAccountSettingsInput {
+  # Contract ID.
+  # Ex: 18-MW Section Revenue or 2018 PGA Champ
+  contractId: ID!
+  # Contract Line.
+  # Ex: Revenue
+  contractLine: NonEmptyString!
+  # Contract Type.
+  # Ex: Revenue Contract or PGA Tournament Revenue Contract
+  contractType: NonEmptyString!
+  # Event Type Name.
+  # Ex: Food and Beverage Ticket Sales or Entry Fee Revenue
+  eventTypeName: NonEmptyString!
+  # Organization Name
+  # Ex: Philadelphia Section PGA
+  organizationName: NonEmptyString
+  # Project ID.
+  # Ex: 18MW-Drive_Chip_&_Putt or 2018 PGA Champ
+  projectId: ID!
+  # Task ID.
+  # Ex: Other Chalet Rev or 1-Entry_Fees
+  taskId: ID!
+}
+
+input AddProductInput {
+  # Product name
+  name: NonEmptyString!
+  # Product event ID
+  eventId: ID!
+  # General Ledger ID
+  ledgerId: ID!
+  # Revenue Account ID
+  revenueAccountId: ID!
+  # Tax Account ID
+  taxAccountId: ID
+  # Project Account Settings
+  projectAccount: ProjectAccountSettingsInput!
+}
+
+input UpdateProductInput {
+  # Product name
+  name: NonEmptyString
+  # Product event ID
+  eventId: ID
+  # General Ledger ID
+  ledgerId: ID
+  # Revenue Account ID
+  revenueAccountId: ID
+  # Tax Account ID
+  taxAccountId: ID
+  # Project Account Settings
+  projectAccount: ProjectAccountSettingsInput
+}

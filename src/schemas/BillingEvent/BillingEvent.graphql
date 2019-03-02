@@ -1,0 +1,35 @@
+type BillingEvent {
+  # BillingEvent ID
+  id: ID!
+  # Amount
+  amount: Money
+  # Contract Number
+  contractId: String
+  # Contract Line
+  contractLine: String
+  # Contract Type
+  contractType: String
+  # The date and time when the BillingEvent was created
+  createdAt: DateTime
+  # Date
+  date: Date
+  # Fusion Error Message
+  error: String
+  # Event Type Name
+  eventTypeName: String
+  # Event Number
+  eventNumber: Int
+  # Invoice Numbers
+  invoices: [ID]
+  # Organization Name
+  organizationName: String
+  # Project Number
+  projectId: String
+  # Source
+  source: String
+  # Submission Status
+  status: String
+  # Task Number
+  taskId: String
+}
+

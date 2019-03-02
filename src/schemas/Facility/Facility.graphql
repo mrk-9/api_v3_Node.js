@@ -1,0 +1,23 @@
+type Facility {
+  # Facility ID
+  id: ID!
+  # Facility Name
+  name: NonEmptyString!
+  # Facility Phone Number
+  phoneNumber: PhoneNumber
+  # Facility Section
+  section: Section!
+  # Facility Universal ID
+  universalId: ID!
+  # Facility Address
+  address: Address
+  # Facility Greenhouse ID
+  greenhouseId: ID
+  # Facility Geolocation
+  geolocation: Geolocation
+  # The date and time when the Facility was created
+  createdAt: DateTime
+  # The date and time when the Facility was last updated
+  updatedAt: DateTime
+}
+

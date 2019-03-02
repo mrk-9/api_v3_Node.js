@@ -1,0 +1,15 @@
+
+type JournalEntry {
+  # Account ID
+  accountId: ID
+  # Amount
+  amount: Money
+  # Date
+  date: Date
+  # Invoice Numbers
+  invoices: [ID]
+  # Ledger ID
+  ledgerId: ID
+  # Source
+  source: String
+}
